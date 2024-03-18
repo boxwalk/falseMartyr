@@ -4588,6 +4588,7 @@ MonoBehaviour:
   ModificationController: {fileID: 0}
   ItemController: {fileID: 0}
   UIController: {fileID: 0}
+  ShopController: {fileID: 0}
 --- !u!1 &1868469064
 GameObject:
   m_ObjectHideFlags: 0
