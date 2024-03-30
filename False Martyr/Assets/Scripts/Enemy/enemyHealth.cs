@@ -6,6 +6,8 @@ public class enemyHealth : MonoBehaviour
 {
     //serialized variables
     public float enemy_health;
+    [HideInInspector] public float max_health;
+    [SerializeField] private bool is_boss;
     [SerializeField] private GameObject death_particles;
     [SerializeField] private GameObject death_particles2;
     public float spawn_check_radius;
@@ -15,6 +17,7 @@ public class enemyHealth : MonoBehaviour
     private ReferenceController reference;
     private camera_controller cam;
     private room_controller room;
+    private bossHealthBar healthBar;
 
     //componeents
     private Animator anim;
@@ -28,15 +31,23 @@ public class enemyHealth : MonoBehaviour
         reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
         cam = reference.CameraController;
         room = reference.RoomController;
+        healthBar = reference.bossHealthBar;
 
         //get components
         anim = GetComponent<Animator>();
+
+        //set values
+        max_health = enemy_health;
     }
 
     void Update()
     {
         if (enemy_health <= 0) //check for death
             death();
+        if (is_boss)
+            healthBar.health = enemy_health;
+            healthBar.maxHealth = max_health;
+
     }
 
     void death() //destroy object 

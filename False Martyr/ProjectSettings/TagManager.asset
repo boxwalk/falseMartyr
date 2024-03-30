@@ -19,6 +19,9 @@ TagManager:
   - ModController
   - UIController
   - ShopController
+  - MinimapController
+  - Exit
+  - HealthBar
   layers:
   - Default
   - TransparentFX

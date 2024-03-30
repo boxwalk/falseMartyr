@@ -21,6 +21,7 @@ public class player_health : MonoBehaviour
     //references
     private ReferenceController reference;
     private camera_controller cam;
+    private gameplayController gameplay;
     [SerializeField] private GameObject damage_particles;
     [SerializeField] private GameObject death_particles;
     [SerializeField] private GameObject death2_particles;
@@ -33,6 +34,7 @@ public class player_health : MonoBehaviour
         //get references
         reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
         cam = reference.CameraController;
+        gameplay = reference.GameplayController;
         //get components
         anim = GetComponent<Animator>();
     }
@@ -90,6 +92,12 @@ public class player_health : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Damage") && !is_in_iframes)
             StartCoroutine(take_damage());
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Exit"))
+            gameplay.nextFloor();
     }
 
     public void max_health_up() //increment max health

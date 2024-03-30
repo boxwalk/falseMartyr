@@ -15,6 +15,12 @@ public class shopController : MonoBehaviour
     void Start()
     {
         shop_number = Random.Range(3, 8); //get number of shop items
+
+        if (shop_number == 6) //fix lopsided shops
+            shop_number = 5;
+        else if (shop_number == 4)
+            shop_number = 5;
+
         for(int i = 0; i < shop_number; i++)
         {
             shop_items.Add(Random.Range(0, 3)); //pick shop items

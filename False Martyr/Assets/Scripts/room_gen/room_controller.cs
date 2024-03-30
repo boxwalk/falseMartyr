@@ -12,15 +12,15 @@ public class room_controller : MonoBehaviour
     [SerializeField] private int room_height;
 
     //entire floor dimensions 
-    [SerializeField] private int grid_size_x;
-    [SerializeField] private int grid_size_y;
+    public int grid_size_x;
+    public int grid_size_y;
 
     //room count
     [SerializeField] private int max_rooms;
     [SerializeField] private int min_rooms;
 
     //rooms list
-    private List<GameObject> rooms_list = new List<GameObject>();
+    [HideInInspector] public List<GameObject> rooms_list = new List<GameObject>();
 
     //2d grid array
     private int[,] room_grid;
@@ -44,16 +44,19 @@ public class room_controller : MonoBehaviour
     [HideInInspector] public List<GameObject> enemy_rooms = new List<GameObject>();
     [HideInInspector] public List<GameObject> item_rooms_list = new List<GameObject>();
     [SerializeField] private int item_rooms;
+    public GameObject bossRoom; 
 
     //references to controllers
     private ReferenceController referenceController;
     private enemyGenController enemyGenController;
     private itemController itemController;
     private shopController shopController;
+    private minimapController minimapController;
 
     //prefabs
     [SerializeField] private GameObject item_pedestal;
     [SerializeField] private GameObject shop_item;
+    [SerializeField] private GameObject shopkeep;
 
     //shop values
     private GameObject shop_room;
@@ -71,6 +74,7 @@ public class room_controller : MonoBehaviour
         enemyGenController = referenceController.enemyGenController;
         itemController = referenceController.ItemController;
         shopController = referenceController.ShopController;
+        minimapController = referenceController.MinimapController;
 
         //begin generation
         Vector2Int initial_room_index = new Vector2Int(grid_size_x / 2, grid_size_y / 2);
@@ -305,6 +309,7 @@ public class room_controller : MonoBehaviour
         //set furthest room to boss room
         furthest_room.room_type = "boss";
         temp_end_rooms.Remove(furthest_room.gameObject);
+        bossRoom = furthest_room.gameObject;
 
         //pick item rooms
         for(int i = 0; i < item_rooms ; i++)
@@ -426,5 +431,13 @@ public class room_controller : MonoBehaviour
             GameObject obj = Instantiate(shop_item, new Vector2(roomcentre.x + shop_slot_pos[i].x, roomcentre.y + shop_slot_pos[i].y), Quaternion.identity); //instantiate item prefab
             obj.transform.GetChild(1).gameObject.GetComponent<shopItemLogic>().item_type = shopController.shop_items[i];
         }
+        Instantiate(shopkeep, new Vector2(roomcentre.x - 0.072f, roomcentre.y + 2.16f), Quaternion.identity); //instantiate shopkeep
+
+        //build minimap
+        minimapController.instantiate_minimap();
+
+        //boss room 
+        room_logic boss_script = bossRoom.GetComponent<room_logic>();
+        enemyGenController.spawn_boss_room(boss_script, GetPositionFromGridIndex(boss_script.room_index));
     }
 }

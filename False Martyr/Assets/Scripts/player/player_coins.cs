@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class player_coins : MonoBehaviour
@@ -12,11 +13,14 @@ public class player_coins : MonoBehaviour
     [SerializeField] private GameObject coin_counter;
     [SerializeField] private TextMeshProUGUI text;
 
+    //components
+    [SerializeField] private Image healthBar;
+
     void Update()
     {
         text.text = coins.ToString(); //set coin counter display
 
-        if (coins == 0) //does not show coin counter if on 0 coins 
+        if (coins == 0 || healthBar.enabled) //does not show coin counter if on 0 coins 
             coin_counter.SetActive(false);
         else
             coin_counter.SetActive(true);
