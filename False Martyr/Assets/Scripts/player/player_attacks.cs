@@ -24,15 +24,22 @@ public class player_attacks : MonoBehaviour
     [SerializeField] private Transform top_shoot_point;
     [SerializeField] private Transform bottom_shoot_point;
 
+    //references
+    private player_health playerHealth;
+
     void Start()
     {
-        
+        //get references
+        playerHealth = GetComponent<player_health>();
     }
 
     void Update()
     {
-        gather_input();
-        fire_attacks();
+        if (!playerHealth.is_dead)
+        {
+            gather_input();
+            fire_attacks();
+        }
     }
 
     void gather_input()

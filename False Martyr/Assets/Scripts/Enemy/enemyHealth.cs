@@ -58,6 +58,11 @@ public class enemyHealth : MonoBehaviour
 
         room.get_room_script_at_index(cam.room_index).enemy_count--; //decrement the enemy count of the current room
 
+        if(TryGetComponent<minorDeity>(out minorDeity bossScript)) //checks if is minor deity
+        {
+            bossScript.death.Invoke(); //destroy excess bullets
+        }
+
         Destroy(gameObject);
     }
 

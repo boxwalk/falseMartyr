@@ -16,7 +16,8 @@ public class player_health : MonoBehaviour
     [SerializeField] private float wait_time_After_death;
 
     //private variables
-    private bool is_in_iframes = false;
+    public bool is_in_iframes = false;
+    public bool is_dead = false;
 
     //references
     private ReferenceController reference;
@@ -25,6 +26,7 @@ public class player_health : MonoBehaviour
     [SerializeField] private GameObject damage_particles;
     [SerializeField] private GameObject death_particles;
     [SerializeField] private GameObject death2_particles;
+    [SerializeField] private GameObject spirit_particles;
 
     //components
     private Animator anim;
@@ -54,13 +56,16 @@ public class player_health : MonoBehaviour
             spirit_health = 0;
     }
 
-    private IEnumerator take_damage()
+    public IEnumerator take_damage()
     {
         anim.SetTrigger("damage"); //start animation
         StartCoroutine(cam.camera_shake(shake_duration, shake_magnitude)); //camera shake
 
         if (spirit_health > 0) //take damage
+        {
+            Instantiate(spirit_particles, transform.position, Quaternion.identity);
             spirit_health--; //decrement spirit health
+        }
         else
             health--; //decrement health
 
@@ -77,6 +82,7 @@ public class player_health : MonoBehaviour
     IEnumerator death()
     {
         //death
+        is_dead = true;
         yield return new WaitForSeconds(0.1f);
         transform.GetChild(0).gameObject.SetActive(false) ; //stop showing player
         for(int i = 0; i < 5; i++)
@@ -114,5 +120,6 @@ public class player_health : MonoBehaviour
     public void get_spirit_hearts(int amount) //gain spirit hearts
     {
         spirit_health += amount;
+        Instantiate(spirit_particles, transform.position, Quaternion.identity);
     }
 }

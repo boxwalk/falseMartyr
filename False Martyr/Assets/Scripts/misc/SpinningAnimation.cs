@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class SpinningAnimation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //serialized values
+    [SerializeField] private float spin_speed;
+    [SerializeField] private bool z_rotation;
+    [SerializeField] private bool x_rotation;
+    [SerializeField] private bool y_rotation;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        //rotate
+        if (z_rotation)
+        {
+            transform.Rotate(new Vector3(0, 0, spin_speed * Time.deltaTime));
+        }else if (x_rotation)
+        {
+            transform.Rotate(new Vector3(spin_speed * Time.deltaTime,0,0));
+        } else
+        {
+            transform.Rotate(new Vector3(0, spin_speed * Time.deltaTime,0));
+        }
     }
 }

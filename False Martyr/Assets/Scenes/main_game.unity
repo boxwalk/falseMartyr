@@ -6119,9 +6119,11 @@ MonoBehaviour:
   shake_duration: 0.2
   shake_magnitude: 0.1
   wait_time_After_death: 4
+  is_in_iframes: 0
   damage_particles: {fileID: 5199251735420826164, guid: b6de040de2b8d0c48834cb940e120eb8, type: 3}
   death_particles: {fileID: 5199251735420826164, guid: d95c8b30def236c4db8289ccf92e3757, type: 3}
   death2_particles: {fileID: 1363070023380237414, guid: c7fd30172e70d0b42875035bd3babd16, type: 3}
+  spirit_particles: {fileID: 1363070023380237414, guid: c693b4179fdb1134a915040fce69bb1f, type: 3}
 --- !u!114 &2044333653
 MonoBehaviour:
   m_ObjectHideFlags: 0
