@@ -152,6 +152,7 @@ public class gameplayController : MonoBehaviour
         GameObject instantiated_item = Instantiate(itemController.item_prefab, new Vector3(room_centre.x + pedestal_offset, room_centre.y + itemController.item_library[item].item_y_offset, room_centre.z), Quaternion.identity); //spawn items
         instantiated_item.GetComponent<SpriteRenderer>().sprite = itemController.item_library[item].item_sprite; //set item sprite
         instantiated_item.GetComponent<itemLogic>().item_id = item; //set id correctly
+        instantiated_item.GetComponent<Animator>().SetTrigger("spawn"); // play spawn animation
     }
 
     /*

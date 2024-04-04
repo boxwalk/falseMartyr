@@ -6,7 +6,7 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     //components
-    private Animator anim;
+    [HideInInspector] public Animator anim;
 
     //children
     private TextMeshProUGUI Top_text;

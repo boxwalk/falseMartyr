@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1164757716597469540}
   - component: {fileID: 1734189981588749413}
   - component: {fileID: 2909313186513058965}
+  - component: {fileID: 6287918210720502498}
   m_Layer: 6
   m_Name: item pedestal
   m_TagString: Untagged
@@ -137,3 +138,24 @@ PolygonCollider2D:
       - {x: -20.874525, y: 25.374388}
       - {x: -30.772026, y: 18.67344}
   m_UseDelaunayMesh: 0
+--- !u!95 &6287918210720502498
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5557964877232836766}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: acaca75e3f5409342a5d2d3fddf47aac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

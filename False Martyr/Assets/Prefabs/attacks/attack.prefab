@@ -163,6 +163,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack_dir: 1
   bullet_speed: 10
-  damage: 5
+  damage: 50
   explosion_particle: {fileID: 5199251735420826164, guid: d95c8b30def236c4db8289ccf92e3757, type: 3}
   damage_particle: {fileID: 1363070023380237414, guid: c7fd30172e70d0b42875035bd3babd16, type: 3}

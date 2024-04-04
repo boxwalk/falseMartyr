@@ -306,6 +306,7 @@ MonoBehaviour:
   death_particles2: {fileID: 1363070023380237414, guid: c7fd30172e70d0b42875035bd3babd16, type: 3}
   spawn_check_radius: 1.8
   spawn_check_shown: 0
+  bonusDeathPrefab: {fileID: 3196453933256740183, guid: e5b8bdd0ccacb644b8b2e32ca60e13df, type: 3}
   room_index: {x: 1000, y: 1000}
 --- !u!95 &2444609434354060134
 Animator:

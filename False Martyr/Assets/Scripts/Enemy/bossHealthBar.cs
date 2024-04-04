@@ -25,6 +25,7 @@ public class bossHealthBar : MonoBehaviour
     //components
     private Slider slider;
     private Slider Easeslider;
+    private Animator anim;
 
     void Start()
     {
@@ -35,6 +36,7 @@ public class bossHealthBar : MonoBehaviour
         //get components
         slider = transform.GetChild(1).GetComponent<Slider>();
         Easeslider = transform.GetChild(0).GetComponent<Slider>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -66,8 +68,15 @@ public class bossHealthBar : MonoBehaviour
 
     private IEnumerator hide_healthbar()
     {
-        float targettime = Time.time + 2;
+        float targettime = Time.time + 1;
         while(targettime > Time.time)
+        {
+            Easeslider.value = Mathf.Lerp(Easeslider.value, 0f, lerpSpeed);
+            yield return null;
+        }
+        anim.SetTrigger("close_bar");
+        targettime = Time.time + 1;
+        while (targettime > Time.time)
         {
             Easeslider.value = Mathf.Lerp(Easeslider.value, 0f, lerpSpeed);
             yield return null;

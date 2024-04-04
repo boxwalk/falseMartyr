@@ -10,6 +10,7 @@ public class minorDeity : enemyAbstract
     private int attack_number = 0;
     private bool former_activated = false;
     private bool touchingWall = false;
+    private bool full_activation = false;
 
     //serialized values
     [SerializeField] private float moveSpeed;
@@ -42,6 +43,7 @@ public class minorDeity : enemyAbstract
     //references
     private GameObject player;
     private room_controller room;
+    private UIController UIController;
 
     //events 
     [HideInInspector] public UnityEvent death;
@@ -63,6 +65,7 @@ public class minorDeity : enemyAbstract
         //get references
         player = reference.Player;
         room = reference.RoomController;
+        UIController = reference.UIController;
     }
 
     void Update()
@@ -72,9 +75,9 @@ public class minorDeity : enemyAbstract
         {
             if (!former_activated){ //run logic on first activation
                 former_activated = true;
-                firstActivationLogic();}
-
-            enemy_behaviour(); //run enemy logic if activated
+                StartCoroutine(firstActivationLogic());}
+            if(full_activation)
+                enemy_behaviour(); //run enemy logic if activated
         }
     }
 
@@ -109,11 +112,15 @@ public class minorDeity : enemyAbstract
         }
     }
 
-    void firstActivationLogic()
+    private IEnumerator firstActivationLogic()
     {
         //initiialize values
         attack_ready = Time.time + Random.Range(minAttackReadyTime, maxAttackReadyTime);
+        //set trigger
+        UIController.anim.SetTrigger("bossScreen");
 
+        yield return new WaitForSeconds(1.3f);
+        full_activation = true;
     }
 
     private IEnumerator spinAttack() //spin and then launch bullets in all directions
