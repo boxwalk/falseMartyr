@@ -7,7 +7,7 @@ public class heart_controller : MonoBehaviour
 {
     //references
     private ReferenceController reference;
-    private player_health playerHealth;
+    private statController stats;
 
     //sprites
     [SerializeField] private Sprite empty_heart;
@@ -19,14 +19,14 @@ public class heart_controller : MonoBehaviour
     {
         //get references
         reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
-        playerHealth = reference.Player.GetComponent<player_health>();
+        stats = reference.StatController;
     }
 
     void Update()
     {
-        int health = playerHealth.health;
-        int max_health = playerHealth.max_health;
-        int spirit_hearts = playerHealth.spirit_health;
+        int health = stats.health;
+        int max_health = stats.maxhealth;
+        int spirit_hearts = stats.spiritHealth;
         for(int i = 1; i < 35; i++)
         {
             Image heart = transform.GetChild(i-1).gameObject.GetComponent<Image>();

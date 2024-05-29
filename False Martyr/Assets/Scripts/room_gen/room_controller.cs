@@ -34,6 +34,7 @@ public class room_controller : MonoBehaviour
     //generation complete boolean
     private bool generation_complete = false;
     private bool generation_stageone_successfull = false;
+    [HideInInspector] public bool full_gen_complete = false;
 
     //end rooms list
     [HideInInspector] public List<GameObject> end_rooms = new List<GameObject>();
@@ -52,6 +53,7 @@ public class room_controller : MonoBehaviour
     private itemController itemController;
     private shopController shopController;
     private minimapController minimapController;
+    private statController stats;
 
     //prefabs
     [SerializeField] private GameObject item_pedestal;
@@ -75,6 +77,7 @@ public class room_controller : MonoBehaviour
         itemController = referenceController.ItemController;
         shopController = referenceController.ShopController;
         minimapController = referenceController.MinimapController;
+        stats = referenceController.StatController;
 
         //begin generation
         Vector2Int initial_room_index = new Vector2Int(grid_size_x / 2, grid_size_y / 2);
@@ -397,7 +400,7 @@ public class room_controller : MonoBehaviour
             item_drops.Add("coin");
         }
         item_drops.Add("coin");
-        int reward_number = Random.Range(0, 3) + 2; //additionally, 2-4 more rewards will spawn
+        int reward_number = Random.Range(0, (int)Mathf.Round(stats.luck)) + 2; //additionally, 2-4 more rewards will spawn
         for (int i = 0; i < reward_number; i++)
         {
             switch (Random.Range(0, 5)) //pick a random room reward
@@ -439,5 +442,35 @@ public class room_controller : MonoBehaviour
         //boss room 
         room_logic boss_script = bossRoom.GetComponent<room_logic>();
         enemyGenController.spawn_boss_room(boss_script, GetPositionFromGridIndex(boss_script.room_index));
+
+        //generation complete
+        full_gen_complete = true;
+    }
+
+    public void addNewReward()
+    {
+        string rewardToAdd = "na";
+        switch (Random.Range(0, 5)) //pick a random room reward
+        {
+            case 0: //2 in 5 chance of heart
+            case 1:
+                rewardToAdd = "heart";
+                break;
+            case 2: //2 in 5 chance of coins
+            case 3:
+                rewardToAdd = "coin";
+                break;
+            case 4: //1 in 5 chance of spirit heart
+                rewardToAdd = "spirit";
+                break;
+        }
+
+        List<room_logic> reward_rooms = new(); //setup room list
+        foreach (GameObject room in enemy_rooms) //initialize list with enemy rooms
+        {
+            reward_rooms.Add(room.GetComponent<room_logic>());
+        }
+        room_logic random_room = reward_rooms[Random.Range(0, reward_rooms.Count)]; //pick the index of a random room
+        random_room.rewards.Add(rewardToAdd); //add reward to reward list of room
     }
 }

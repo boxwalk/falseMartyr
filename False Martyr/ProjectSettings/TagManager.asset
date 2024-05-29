@@ -22,6 +22,8 @@ TagManager:
   - MinimapController
   - Exit
   - HealthBar
+  - loading
+  - StatController
   layers:
   - Default
   - TransparentFX

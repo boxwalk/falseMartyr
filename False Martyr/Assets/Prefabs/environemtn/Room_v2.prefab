@@ -1096,6 +1096,7 @@ MonoBehaviour:
   left_door_hitbox: {fileID: 2367010350541319384}
   right_door_hitbox: {fileID: 2407323419342185754}
   enemy_count: 1
+  rewards: []
 --- !u!95 &2168314002230847472
 Animator:
   serializedVersion: 5

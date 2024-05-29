@@ -5,11 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class player_health : MonoBehaviour
 {
-    //main variables
-    public int max_health;
-    public int health;
-    public int spirit_health = 0;
-
+     //serialized values
     [SerializeField] private float i_frames_duration;
     [SerializeField] private float shake_duration;
     [SerializeField] private float shake_magnitude;
@@ -23,6 +19,7 @@ public class player_health : MonoBehaviour
     private ReferenceController reference;
     private camera_controller cam;
     private gameplayController gameplay;
+    private statController stats;
     [SerializeField] private GameObject damage_particles;
     [SerializeField] private GameObject death_particles;
     [SerializeField] private GameObject death2_particles;
@@ -37,6 +34,7 @@ public class player_health : MonoBehaviour
         reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
         cam = reference.CameraController;
         gameplay = reference.GameplayController;
+        stats = reference.StatController;
         //get components
         anim = GetComponent<Animator>();
     }
@@ -48,12 +46,12 @@ public class player_health : MonoBehaviour
 
     void check_limit_break() //makes sure health is within thresholds
     {
-        if (max_health < health)
-            health = max_health;
-        if (health < 0)
-            health = 0;
-        if (spirit_health < 0)
-            spirit_health = 0;
+        if (stats.maxhealth < stats.health)
+            stats.health = stats.maxhealth;
+        if (stats.health < 0)
+            stats.health = 0;
+        if (stats.spiritHealth < 0)
+            stats.spiritHealth = 0;
     }
 
     public IEnumerator take_damage()
@@ -61,16 +59,16 @@ public class player_health : MonoBehaviour
         anim.SetTrigger("damage"); //start animation
         StartCoroutine(cam.camera_shake(shake_duration, shake_magnitude)); //camera shake
 
-        if (spirit_health > 0) //take damage
+        if (stats.spiritHealth > 0) //take damage
         {
             Instantiate(spirit_particles, transform.position, Quaternion.identity);
-            spirit_health--; //decrement spirit health
+            stats.spiritHealth--; //decrement spirit health
         }
         else
-            health--; //decrement health
+            stats.health--; //decrement health
 
         is_in_iframes = true; //start i frames
-        if (health + spirit_health <= 0) //check for death
+        if (stats.health + stats.spiritHealth <= 0) //check for death
             StartCoroutine(death());
         else{
             Instantiate(damage_particles, transform.position, Quaternion.identity); //damage particles
@@ -108,18 +106,18 @@ public class player_health : MonoBehaviour
 
     public void max_health_up() //increment max health
     {
-        max_health++;
-        health++;
+        stats.maxhealth++;
+        stats.health++;
     }
 
     public void heal(int heal_amount) //heals the player by a certain amount
     {
-        health += heal_amount;
+        stats.health += heal_amount;
     }
 
     public void get_spirit_hearts(int amount) //gain spirit hearts
     {
-        spirit_health += amount;
+        stats.spiritHealth += amount;
         Instantiate(spirit_particles, transform.position, Quaternion.identity);
     }
 }

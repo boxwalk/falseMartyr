@@ -19,6 +19,7 @@ public class player_movement : MonoBehaviour
     //references
     private ReferenceController reference;
     private gameplayController gameplayController;
+    private gameController gameController;
 
     //movement values
     private float finalSpeed;
@@ -31,6 +32,7 @@ public class player_movement : MonoBehaviour
         //get references
         reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
         gameplayController = reference.GameplayController;
+        gameController = reference.GameController;
     }
 
     //Update to run subroutines
@@ -42,9 +44,12 @@ public class player_movement : MonoBehaviour
     //everything contianed in the update method
     void playerMovementController()
     {
-        speed_calculation();
-        gather_input();
-        playerMovement();
+        if (gameController.fullGameStart)
+        {
+            speed_calculation();
+            gather_input();
+            playerMovement();
+        }
     }
 
     //player movement 

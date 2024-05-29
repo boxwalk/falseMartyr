@@ -31,6 +31,7 @@ public class minimapController : MonoBehaviour
     private ReferenceController reference;
     private room_controller roomController;
     private camera_controller playerIndex;
+    private gameController gameController;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class minimapController : MonoBehaviour
         reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
         roomController = reference.RoomController;
         playerIndex = reference.CameraController;
+        gameController = reference.GameController;
     }
 
     void Update()
@@ -51,7 +53,10 @@ public class minimapController : MonoBehaviour
 
     void minimap_showing() //only shows minimap if tab is pressed
     {
-        bool tabpressed = Input.GetKey(KeyCode.Tab); //get input
+        bool tabpressed = false;
+
+        if (gameController.fullGameStart)
+            tabpressed = Input.GetKey(KeyCode.Tab); //get input
 
         if(tabpressed && !former_minimap_active && anim.GetCurrentAnimatorStateInfo(0).IsName("minimap_idle")) //apply to animator
         {

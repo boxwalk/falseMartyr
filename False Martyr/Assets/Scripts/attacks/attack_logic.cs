@@ -8,18 +8,43 @@ public class attack_logic : MonoBehaviour
     public int attack_dir = 1;
 
     //serialized values
-    [SerializeField] private float bullet_speed;
-    [SerializeField] private float damage;
+    private float bullet_speed;
+    private float damage;
     [SerializeField] private GameObject explosion_particle;
     [SerializeField] private GameObject damage_particle;
 
     //components
     private Rigidbody2D rb;
+    private Animator anim;
+
+    //reference
+    private ReferenceController reference;
+    private statController stats;
+
+    //main values
+    private float baseSize;
+    private float range;
+    private float initializedTime;
+    private bool rangeAnimStarted = false;
 
     void Start()
     {
         //get references to components
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+
+        //get references
+        reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
+        stats = reference.StatController;
+
+        //set up characteristics
+        damage = stats.damage;
+        range = stats.range;
+        bullet_speed = stats.bulletSpeed;
+        baseSize = transform.localScale.x;
+        float newScale = baseSize * (stats.bulletSize / 10);
+        transform.localScale = new Vector3(newScale, newScale, transform.localScale.z);
+        initializedTime = Time.time;
     }
 
     void Update()
@@ -33,6 +58,8 @@ public class attack_logic : MonoBehaviour
             rb.velocity = new Vector2(0, bullet_speed); //attack up
         else if (attack_dir == 4)
             rb.velocity = new Vector2(0, -bullet_speed); //attack down
+
+        rangeLogic();
     }
 
     void destroy_bullet()
@@ -56,5 +83,19 @@ public class attack_logic : MonoBehaviour
     {
         if (collision.gameObject.tag == "MainCamera")
             destroy_bullet(); //left camera
+    }
+    
+    void rangeLogic()
+    {
+        if(((Time.time - initializedTime + 0.5f)*bullet_speed) > range && !rangeAnimStarted)
+        {
+            //start playing range anim
+            anim.SetTrigger("rangeOut");
+            rangeAnimStarted = true;
+        }
+        else if (((Time.time - initializedTime) * bullet_speed) > range)
+        {
+            destroy_bullet();
+        }
     }
 }

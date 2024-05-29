@@ -14,7 +14,7 @@ public class player_attacks : MonoBehaviour
     [SerializeField] private GameObject player_attack;
 
     //serialized values
-    [SerializeField] private float fire_speed;
+    private float fire_speed;
 
     //attack variables
     private bool attack_charged = true;
@@ -26,17 +26,24 @@ public class player_attacks : MonoBehaviour
 
     //references
     private player_health playerHealth;
+    private ReferenceController reference;
+    private gameController gameController;
+    private statController statController;
 
     void Start()
     {
         //get references
         playerHealth = GetComponent<player_health>();
+        reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
+        gameController = reference.GameController;
+        statController = reference.StatController;
     }
 
     void Update()
     {
-        if (!playerHealth.is_dead)
+        if (!playerHealth.is_dead && gameController.fullGameStart)
         {
+            get_stats();
             gather_input();
             fire_attacks();
         }
@@ -85,5 +92,10 @@ public class player_attacks : MonoBehaviour
     {
         yield return new WaitForSeconds(fire_speed); //wait for attack to recharge
         attack_charged = true;
+    }
+
+    void get_stats()
+    {
+        fire_speed = statController.trueFireRate; //get stat from stats controller
     }
 }

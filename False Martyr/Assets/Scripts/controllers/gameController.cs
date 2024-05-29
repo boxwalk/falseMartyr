@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class gameController : MonoBehaviour
 {
@@ -11,6 +12,14 @@ public class gameController : MonoBehaviour
     //main menu
     [HideInInspector] public Coroutine storyScreenCoroutine;
     [HideInInspector] public Coroutine skipCoroutine;
+
+    //main game
+    private ReferenceController reference;
+    private room_controller room;
+    private statController stats;
+    private GameObject loadingScreen;
+    [HideInInspector] public bool fullGameStart = false;
+    private UIController ui;
 
     //do not destroy on load
     void Awake()
@@ -40,7 +49,7 @@ public class gameController : MonoBehaviour
         yield return new WaitForSeconds(80);
         //end story screen
         StopCoroutine(skipCoroutine);
-        startFinalLoad();
+        StartCoroutine(startFinalLoad());
     }
 
     //skip button logic
@@ -55,11 +64,28 @@ public class gameController : MonoBehaviour
             yield return null;
         //end story screen
         StopCoroutine(storyScreenCoroutine);
-        startFinalLoad();
+        StartCoroutine(startFinalLoad());
     }
 
-    public void startFinalLoad()
+    public IEnumerator startFinalLoad()
     {
         menuAnimator.SetTrigger("finalLoad");
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("main_game");
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        //main game start
+        reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
+        room = reference.RoomController;
+        ui = reference.UIController;
+        stats = reference.StatController;
+        stats.room = room;
+        loadingScreen = GameObject.FindGameObjectWithTag("loading");
+        while (!room.full_gen_complete) //wait for generation
+            yield return null;
+        Destroy(loadingScreen); //begin game
+        fullGameStart = true;
+        //logic on game start
+        ui.anim.SetTrigger("dungeontitle"); //set title screen
     }
 }

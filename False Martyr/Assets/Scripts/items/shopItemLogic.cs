@@ -13,6 +13,7 @@ public class shopItemLogic : MonoBehaviour
     private player_coins playerCoins;
     private itemController itemController;
     private player_health playerHealth;
+    private statController stats;
 
     [SerializeField] private GameObject particles;
 
@@ -24,6 +25,7 @@ public class shopItemLogic : MonoBehaviour
         playerCoins = reference.Player.GetComponent<player_coins>();
         itemController = reference.ItemController;
         playerHealth = reference.Player.GetComponent<player_health>();
+        stats = reference.StatController;
 
         price = shopController.shop_library[item_type].price;
         transform.parent.GetChild(0).GetComponent<TextMeshPro>().text = price.ToString();
@@ -39,7 +41,7 @@ public class shopItemLogic : MonoBehaviour
             //hit player
             if(playerCoins.coins >= price)
             {
-                if((!(item_type == 0)) || (item_type == 0 && !(playerHealth.health == playerHealth.max_health))) //hearts cannot be picked up if on full health
+                if((!(item_type == 0)) || (item_type == 0 && !(stats.health == stats.maxhealth))) //hearts cannot be picked up if on full health
                 {
                     //buy item
                     playerCoins.gain_coins(price * -1); //charge money
