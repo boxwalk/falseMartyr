@@ -1,5 +1,89 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4669744925496191496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7354985296016168375}
+  - component: {fileID: 4259645208352625598}
+  m_Layer: 6
+  m_Name: shadow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7354985296016168375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4669744925496191496}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1, y: -20.4, z: 0}
+  m_LocalScale: {x: 29.878227, y: 5.8018365, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1649143580335775663}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &4259645208352625598
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4669744925496191496}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -1
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5137255}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &5575051451568744110
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1649143580335775663}
   - component: {fileID: 8078949589904575458}
-  - component: {fileID: 1267049221972490743}
+  - component: {fileID: 4971540702685060747}
   m_Layer: 6
   m_Name: Urn
   m_TagString: Wall
@@ -27,10 +111,11 @@ Transform:
   m_GameObject: {fileID: 5575051451568744110}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.3848763, y: -3.4476116, z: 10.615927}
+  m_LocalPosition: {x: 4.3848763, y: -3.4476116, z: 0}
   m_LocalScale: {x: 0.03, y: 0.03, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7354985296016168375}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8078949589904575458
@@ -85,8 +170,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1267049221972490743
-BoxCollider2D:
+--- !u!60 &4971540702685060747
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,7 +202,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.59810066, y: 3.123869}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 62.159996, y: 12.889999, z: 46.959995, w: 19.6}
     pivot: {x: 0.5507305, y: 0.42664737}
@@ -127,6 +212,31 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 37.870792, y: 55.167835}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 5.2922215, y: -20.890936}
+      - {x: 8.173359, y: -19.53903}
+      - {x: 8.228413, y: -17.370592}
+      - {x: 7.8715634, y: -15.306012}
+      - {x: 15.709367, y: 4.791703}
+      - {x: 15.863894, y: 13.157779}
+      - {x: 15.3739605, y: 15.410596}
+      - {x: 8.781957, y: 16.942585}
+      - {x: 7.867939, y: 17.802824}
+      - {x: 7.971016, y: 19.083775}
+      - {x: 10.332853, y: 19.918957}
+      - {x: 10.567696, y: 22.410532}
+      - {x: 8.133236, y: 24.099396}
+      - {x: 3.7450306, y: 25.880024}
+      - {x: -0.33483553, y: 26.24045}
+      - {x: -11.064691, y: 23.511023}
+      - {x: -10.934178, y: 19.974094}
+      - {x: -9.243186, y: 19.646013}
+      - {x: -8.363819, y: 17.217339}
+      - {x: -15.674464, y: 15.144838}
+      - {x: -16.507515, y: 13.69875}
+      - {x: -15.28318, y: 1.391242}
+      - {x: -7.5286226, y: -17.317064}
+      - {x: -8.3083, y: -19.938526}
+      - {x: -2.4246397, y: -21.454573}
+  m_UseDelaunayMesh: 0

@@ -54,6 +54,7 @@ public class room_controller : MonoBehaviour
     private shopController shopController;
     private minimapController minimapController;
     private statController stats;
+    private roomConfigController configController;
 
     //prefabs
     [SerializeField] private GameObject item_pedestal;
@@ -78,6 +79,7 @@ public class room_controller : MonoBehaviour
         shopController = referenceController.ShopController;
         minimapController = referenceController.MinimapController;
         stats = referenceController.StatController;
+        configController = referenceController.RoomConfigController;
 
         //begin generation
         Vector2Int initial_room_index = new Vector2Int(grid_size_x / 2, grid_size_y / 2);
@@ -361,9 +363,12 @@ public class room_controller : MonoBehaviour
     //STAGE THREE of generation
     private void generation_stage_three()
     {
-        //spawn enemies
+        //spawn enemies and room configuations
         foreach(GameObject room in enemy_rooms) //loop through each enemy room
         {
+            //room configuurations
+            configController.getRoomConfig(room.transform);
+            //spawn enemies
             room_logic room_script = room.GetComponent<room_logic>();
             Vector3 room_centre = GetPositionFromGridIndex(room_script.room_index);
             enemyGenController.floor_one_room_gen(room_script,room_centre); //run method in enemyGen script

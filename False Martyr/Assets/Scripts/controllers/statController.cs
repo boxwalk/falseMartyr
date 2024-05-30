@@ -20,12 +20,16 @@ public class statController : MonoBehaviour
     public float sin;
     public float fervour;
 
+    [Header("testing framework")]
+    public bool testingForm;
+
     //references
     [HideInInspector] public room_controller room;
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if(!testingForm)
+            DontDestroyOnLoad(gameObject);
     }
 
     void Start()

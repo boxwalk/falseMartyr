@@ -24,6 +24,7 @@ TagManager:
   - HealthBar
   - loading
   - StatController
+  - ConfigController
   layers:
   - Default
   - TransparentFX

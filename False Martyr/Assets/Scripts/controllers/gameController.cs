@@ -9,6 +9,9 @@ public class gameController : MonoBehaviour
     [SerializeField] private Animator menuAnimator;
     [SerializeField] private Animator storyScreenAnimator;
 
+    [Header("testing framework")]
+    public bool testingForm;
+
     //main menu
     [HideInInspector] public Coroutine storyScreenCoroutine;
     [HideInInspector] public Coroutine skipCoroutine;
@@ -24,7 +27,8 @@ public class gameController : MonoBehaviour
     //do not destroy on load
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if(!testingForm)
+            DontDestroyOnLoad(gameObject);
     }
 
     //button on main menu pressed
@@ -74,6 +78,29 @@ public class gameController : MonoBehaviour
         SceneManager.LoadScene("main_game");
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
+        //main game start
+        reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
+        room = reference.RoomController;
+        ui = reference.UIController;
+        stats = reference.StatController;
+        stats.room = room;
+        loadingScreen = GameObject.FindGameObjectWithTag("loading");
+        while (!room.full_gen_complete) //wait for generation
+            yield return null;
+        Destroy(loadingScreen); //begin game
+        fullGameStart = true;
+        //logic on game start
+        ui.anim.SetTrigger("dungeontitle"); //set title screen
+    }
+
+    void Start() //only for testing form
+    {
+        if (testingForm)
+            StartCoroutine(testingFormLogic());
+    }
+
+    public IEnumerator testingFormLogic() //logic only run in testing form
+    {
         //main game start
         reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
         room = reference.RoomController;

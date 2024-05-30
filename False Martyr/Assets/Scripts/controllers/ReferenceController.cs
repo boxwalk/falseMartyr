@@ -20,6 +20,7 @@ public class ReferenceController : MonoBehaviour
     [HideInInspector] public bossHealthBar bossHealthBar;
     [HideInInspector] public gameController GameController;
     [HideInInspector] public statController StatController;
+    [HideInInspector] public roomConfigController RoomConfigController;
 
     //assigns references to variables
     void Start()
@@ -37,5 +38,6 @@ public class ReferenceController : MonoBehaviour
         bossHealthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<bossHealthBar>();
         GameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         StatController = GameObject.FindGameObjectWithTag("StatController").GetComponent<statController>();
+        RoomConfigController = GameObject.FindGameObjectWithTag("ConfigController").GetComponent<roomConfigController>();
     }
 }
