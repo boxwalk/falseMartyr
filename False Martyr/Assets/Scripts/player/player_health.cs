@@ -89,7 +89,7 @@ public class player_health : MonoBehaviour
             Instantiate(death_particles, transform.position, Quaternion.identity);
         }
         yield return new WaitForSeconds(wait_time_After_death);
-        SceneManager.LoadScene(1); //load end screen
+        SceneManager.LoadScene(2); //load end screen
     }
 
     private void OnTriggerStay2D(Collider2D collision)

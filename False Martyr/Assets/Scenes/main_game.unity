@@ -4918,63 +4918,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426856108}
   m_CullTransparentMesh: 1
---- !u!1001 &1455146620
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2420595427451613322, guid: 6295b802d463fc749903491e331ff322, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420595427451613322, guid: 6295b802d463fc749903491e331ff322, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420595427451613322, guid: 6295b802d463fc749903491e331ff322, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420595427451613322, guid: 6295b802d463fc749903491e331ff322, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420595427451613322, guid: 6295b802d463fc749903491e331ff322, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420595427451613322, guid: 6295b802d463fc749903491e331ff322, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420595427451613322, guid: 6295b802d463fc749903491e331ff322, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420595427451613322, guid: 6295b802d463fc749903491e331ff322, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420595427451613322, guid: 6295b802d463fc749903491e331ff322, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420595427451613322, guid: 6295b802d463fc749903491e331ff322, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2973407099661391334, guid: 6295b802d463fc749903491e331ff322, type: 3}
-      propertyPath: m_Name
-      value: BasicProjectileEnemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6295b802d463fc749903491e331ff322, type: 3}
 --- !u!1 &1457914578
 GameObject:
   m_ObjectHideFlags: 0
@@ -6725,11 +6668,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_library:
-  - name: basic devil enemy
+  - name: basic devil enemy (0)
     prefab: {fileID: 1184069976569364457, guid: 34ec1a2b245a4b645b023b74307ed07b, type: 3}
-  - name: minor deity
+  - name: minor deity (1)
     prefab: {fileID: 1858479102578552358, guid: 9493435065b977a4a9650456ecd56f4d, type: 3}
-  environemnt:
+  - name: projectile enemy (2)
+    prefab: {fileID: 2973407099661391334, guid: 6295b802d463fc749903491e331ff322, type: 3}
+  preset_library:
+  - name: main pool
+    weight: 10
+    spawnCountMin: 3
+    spawnCountMax: 6
+    basicEnemies: 0000000002000000
+    mediumRarityEnemies: 
+    RareEnemies: 
+    CenterPieceEnemies: 
+    SwarmEnemies: 
+    swarmMultiplierMin: 1
+    swarmMultiplierMax: 1
+  - name: projectile gank
+    weight: 1
+    spawnCountMin: 5
+    spawnCountMax: 8
+    basicEnemies: 02000000
+    mediumRarityEnemies: 
+    RareEnemies: 
+    CenterPieceEnemies: 
+    SwarmEnemies: 02000000
+    swarmMultiplierMin: 1
+    swarmMultiplierMax: 1
+  bossPool: 01000000
+  environment:
     serializedVersion: 2
     m_Bits: 64
 --- !u!1 &1970817799
@@ -7678,4 +7647,3 @@ SceneRoots:
   - {fileID: 2044333644}
   - {fileID: 228631257}
   - {fileID: 1110882933}
-  - {fileID: 1455146620}
