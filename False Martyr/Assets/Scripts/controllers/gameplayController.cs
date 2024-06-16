@@ -25,8 +25,9 @@ public class gameplayController : MonoBehaviour
     [SerializeField] private GameObject exit;
     [SerializeField] private GameObject itemPedestal;
 
-    //layermasks
+    //layermasksp
     [SerializeField] private LayerMask player_mask;
+    [SerializeField] private LayerMask reward_mask;
 
     //reward spawning
     private List<int> heart_spawns = new List<int> { 1, 1, 1, 2 };
@@ -127,7 +128,7 @@ public class gameplayController : MonoBehaviour
         {
             Vector3 room_centre = room_controller.GetPositionFromGridIndex(cam.room_index);
             Vector2 spawn_pos = new Vector2(Random.Range(-7.63f, 7.7f) + room_centre.x, Random.Range(-3.94f, 3.91f) + room_centre.y); //pick spawn location
-            while (Physics2D.OverlapCircle(spawn_pos, 0.5f, player_mask))
+            while (Physics2D.OverlapCircle(spawn_pos, 0.5f, reward_mask))
             {
                 spawn_pos = new Vector2(Random.Range(-7.63f, 7.7f) + room_centre.x, Random.Range(-3.94f, 3.91f) + room_centre.y); //pick spawn location
             }
