@@ -63,6 +63,10 @@ public class skeletonEnemy : enemyAbstract
                 anim.SetTrigger("attack");
             }
         }
+        else
+        {
+            rb.velocity = Vector2.zero; //not moving
+        }
     }
 
     private IEnumerator resolve_attack()

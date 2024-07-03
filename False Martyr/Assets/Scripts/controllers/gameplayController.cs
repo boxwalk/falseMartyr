@@ -165,7 +165,7 @@ public class gameplayController : MonoBehaviour
 
     public void nextFloor() //exit reached
     {
-        SceneManager.LoadScene(2); //load end screen
+        SceneManager.LoadScene(3); //load end screen
     }
 }
 
