@@ -31,6 +31,9 @@ public class swordEnemy : enemyAbstract
     private Vector3 end_pos;
     private Vector3 start_right;
     private Vector3 end_right;
+    private Vector3 pre_right;
+    [SerializeField] private GameObject slash;
+    [SerializeField] private float sword_turn_offset;
 
     //references
     private GameObject player;
@@ -57,7 +60,7 @@ public class swordEnemy : enemyAbstract
         }
         else
         {
-            enemy_behaviour();
+            anim.SetBool("animateSword", true);
         }
     }
 
@@ -115,11 +118,15 @@ public class swordEnemy : enemyAbstract
                 start_right = sword_sprite.transform.up;
                 sword_sprite.transform.position = centre_point.position;
                 sword_sprite.transform.right = player.transform.position - sword_sprite.transform.position; //point towards player
+                pre_right = sword_sprite.transform.right;
                 sword_sprite.transform.position = centre_point.position + (sword_radius * sword_sprite.transform.right);
                 end_pos = sword_sprite.transform.position;
                 sword_sprite.transform.up = player.transform.position - sword_sprite.transform.position;
                 end_right = sword_sprite.transform.up;
                 sword_sprite.transform.position = start_pos;
+                //slash posiitoning
+                slash.transform.right = player.transform.position - sword_sprite.transform.position; //point towards player
+                slash.transform.Rotate(new Vector3(0, 0, sword_turn_offset));
                 //physics
                 rb.velocity = Vector2.zero;
                 //coroutine
@@ -144,5 +151,46 @@ public class swordEnemy : enemyAbstract
         }
         sword_sprite.transform.position = end_pos;
         sword_sprite.transform.up = end_right;
+        float swing_magnitude = 50;
+        float swing_progress = 0;
+        float swing_time = 0.3f;
+        while (attackStartTime + 1.3f > Time.time)
+        {
+            swing_progress += swing_magnitude * Time.deltaTime * (1/swing_time);
+            sword_sprite.transform.position = centre_point.position;
+            sword_sprite.transform.right = pre_right;
+            sword_sprite.transform.Rotate(new Vector3(0, 0, swing_progress));
+            sword_sprite.transform.position = centre_point.position + (sword_radius * sword_sprite.transform.right);
+            sword_sprite.transform.up = sword_sprite.transform.right;
+            yield return null;
+        }
+        swing_magnitude = 100;
+        swing_progress = 0;
+        swing_time = 0.2f;
+        while (attackStartTime + 1.5f > Time.time)
+        {
+            swing_progress += swing_magnitude * Time.deltaTime * (1 / swing_time);
+            sword_sprite.transform.position = centre_point.position;
+            sword_sprite.transform.right = pre_right;
+            sword_sprite.transform.Rotate(new Vector3(0, 0, 50 -swing_progress));
+            sword_sprite.transform.position = centre_point.position + (sword_radius * sword_sprite.transform.right);
+            sword_sprite.transform.up = sword_sprite.transform.right;
+            yield return null;
+        }
+
+        end_pos = sword_sprite.transform.position;
+        end_right = sword_sprite.transform.up;
+        while (attackStartTime + 2.5f > Time.time)
+        {
+            sword_sprite.transform.position = Vector3.Lerp(end_pos, start_pos, Time.time - (attackStartTime +1.5f));
+            sword_sprite.transform.up = Vector3.Lerp(end_right, start_right, Time.time - (attackStartTime + 1.5f));
+            yield return null;
+        }
+        sword_sprite.transform.position = start_pos;
+        sword_sprite.transform.up = start_right;
+
+        isAttacking = false;
+        anim.SetBool("animateSword", true);
+        attackTimer = Time.time + Random.Range(attack_time_min, attack_time_max);
     }
 }

@@ -2368,63 +2368,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565479735}
   m_CullTransparentMesh: 1
---- !u!1001 &574326601
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1118868916901876709, guid: 762c14633872fd64fadc73f422968680, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 1118868916901876709, guid: 762c14633872fd64fadc73f422968680, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 1118868916901876709, guid: 762c14633872fd64fadc73f422968680, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1118868916901876709, guid: 762c14633872fd64fadc73f422968680, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1118868916901876709, guid: 762c14633872fd64fadc73f422968680, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1118868916901876709, guid: 762c14633872fd64fadc73f422968680, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1118868916901876709, guid: 762c14633872fd64fadc73f422968680, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1118868916901876709, guid: 762c14633872fd64fadc73f422968680, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1118868916901876709, guid: 762c14633872fd64fadc73f422968680, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1118868916901876709, guid: 762c14633872fd64fadc73f422968680, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6056434376554136173, guid: 762c14633872fd64fadc73f422968680, type: 3}
-      propertyPath: m_Name
-      value: SwordEnemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 762c14633872fd64fadc73f422968680, type: 3}
 --- !u!1 &574372050
 GameObject:
   m_ObjectHideFlags: 0
@@ -6736,6 +6679,8 @@ MonoBehaviour:
     prefab: {fileID: 2973407099661391334, guid: 6295b802d463fc749903491e331ff322, type: 3}
   - name: skeleton enemy (3)
     prefab: {fileID: 2849384306084151338, guid: efb05b426ce217741bf5d94be4aa5531, type: 3}
+  - name: swordenemy (4)
+    prefab: {fileID: 6056434376554136173, guid: 762c14633872fd64fadc73f422968680, type: 3}
   preset_library:
   - name: main pool
     weight: 10
@@ -6743,7 +6688,7 @@ MonoBehaviour:
     spawnCountMax: 6
     basicEnemies: 0000000002000000
     mediumRarityEnemies: 000000000200000003000000
-    RareEnemies: 
+    RareEnemies: 000000000200000004000000
     CenterPieceEnemies: 
     SwarmEnemies: 
     swarmMultiplierMin: 1
@@ -6761,12 +6706,23 @@ MonoBehaviour:
     swarmMultiplierMax: 1
   - name: skeleton gang
     weight: 2
-    spawnCountMin: 3
-    spawnCountMax: 4
+    spawnCountMin: 2
+    spawnCountMax: 3
     basicEnemies: 03000000
     mediumRarityEnemies: 
     RareEnemies: 
     CenterPieceEnemies: 
+    SwarmEnemies: 
+    swarmMultiplierMin: 1
+    swarmMultiplierMax: 1
+  - name: sword and gang
+    weight: 3
+    spawnCountMin: 4
+    spawnCountMax: 6
+    basicEnemies: 0000000002000000
+    mediumRarityEnemies: 
+    RareEnemies: 
+    CenterPieceEnemies: 0400000004000000
     SwarmEnemies: 
     swarmMultiplierMin: 1
     swarmMultiplierMax: 1
@@ -7720,4 +7676,3 @@ SceneRoots:
   - {fileID: 2044333644}
   - {fileID: 228631257}
   - {fileID: 1110882933}
-  - {fileID: 574326601}
