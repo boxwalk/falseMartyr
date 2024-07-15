@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: dfbf50071c20b594dbed129ad9a2eecc, type: 3}
-  m_Color: {r: 0.8930817, g: 0.45215768, b: 0.45215768, a: 1}
+  m_Color: {r: 0.89411765, g: 0.4509804, b: 0.4509804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -164,3 +164,5 @@ MonoBehaviour:
   bullet_speed: 10
   damage_particle: {fileID: 1363070023380237414, guid: 5236d44445595814cb20d2662725ffa8, type: 3}
   dir: 90
+  spin: 0
+  spin_speed: 0

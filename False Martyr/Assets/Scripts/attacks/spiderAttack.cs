@@ -2,39 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyProjectile : MonoBehaviour
+public class spiderAttack : MonoBehaviour
 {
-    //serialized values
+    public float spin_speed;
     public float bullet_speed;
     [SerializeField] private GameObject damage_particle;
+    private float start_time;
+    private Vector3 start_pos;
 
-    //components
-    private Rigidbody2D rb;
-
-    //public values 
-    public float dir;
-    [HideInInspector] public bool spin = false;
-    [HideInInspector] public float spin_speed;
 
     void Start()
     {
-        //get references to components
-        rb = GetComponent<Rigidbody2D>();
-
-        //set rotation
-        transform.Rotate(new Vector3(0f, 0f, dir));
+        start_time = Time.time;
+        start_pos = transform.localPosition;
     }
 
     void Update()
     {
-        if (spin)
+        if (Time.time < start_time + 0.2)
+        {
+            transform.localPosition = Vector3.Lerp(start_pos, new Vector3(start_pos.x, start_pos.y - 1.6f, start_pos.z), (Time.time - start_time) *5);
+        }
+        else
+        {
             transform.Rotate(new Vector3(0, 0, spin_speed * Time.deltaTime));
-        rb.velocity = transform.right * bullet_speed;
-    }
-
-    public void destroy_bullet()
-    {
-        Destroy(gameObject);
+            transform.position += bullet_speed * Time.deltaTime * transform.right;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,7 +35,7 @@ public class enemyProjectile : MonoBehaviour
         if (collision.gameObject.layer == 6 && !(collision.gameObject.tag == "NoEnemyField"))
         {  //hit walls
             Instantiate(damage_particle, transform.position, Quaternion.identity); //instantiate particles
-            destroy_bullet();
+            transform.parent.GetComponent<autoAimEnemyProjectile>().destroy_bullet();
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
@@ -50,19 +43,13 @@ public class enemyProjectile : MonoBehaviour
             if (!playerHealth.is_in_iframes)
                 playerHealth.StartCoroutine(playerHealth.take_damage());
             Instantiate(damage_particle, transform.position, Quaternion.identity);
-            destroy_bullet();
+            transform.parent.GetComponent<autoAimEnemyProjectile>().destroy_bullet();
         }
     }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "MainCamera")
-            destroy_bullet(); //left camera
-    }
-
-    public IEnumerator up_speed(float WaitTime)
-    {
-        yield return new WaitForSeconds(WaitTime);
-        bullet_speed *= 3;
+            transform.parent.GetComponent<autoAimEnemyProjectile>().destroy_bullet(); //left camera
     }
 }

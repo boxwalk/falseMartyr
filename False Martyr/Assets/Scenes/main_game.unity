@@ -6681,9 +6681,11 @@ MonoBehaviour:
     prefab: {fileID: 2849384306084151338, guid: efb05b426ce217741bf5d94be4aa5531, type: 3}
   - name: swordenemy (4)
     prefab: {fileID: 6056434376554136173, guid: 762c14633872fd64fadc73f422968680, type: 3}
+  - name: patchwork spider (5)
+    prefab: {fileID: 15604768899501856, guid: e32cdf82d0f056f43bea41a1f4f3b6a9, type: 3}
   preset_library:
   - name: main pool
-    weight: 10
+    weight: 15
     spawnCountMin: 3
     spawnCountMax: 6
     basicEnemies: 0000000002000000
@@ -6723,6 +6725,17 @@ MonoBehaviour:
     mediumRarityEnemies: 
     RareEnemies: 
     CenterPieceEnemies: 0400000004000000
+    SwarmEnemies: 
+    swarmMultiplierMin: 1
+    swarmMultiplierMax: 1
+  - name: patchwork spider
+    weight: 6
+    spawnCountMin: 1
+    spawnCountMax: 3
+    basicEnemies: 02000000
+    mediumRarityEnemies: 
+    RareEnemies: 
+    CenterPieceEnemies: 05000000
     SwarmEnemies: 
     swarmMultiplierMin: 1
     swarmMultiplierMax: 1

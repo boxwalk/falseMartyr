@@ -2,37 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyProjectile : MonoBehaviour
+public class spiderWallAttack : MonoBehaviour
 {
-    //serialized values
-    public float bullet_speed;
+    private Vector3 start_pos;
+    private float start_time;
+    private bool first_frame = true;
     [SerializeField] private GameObject damage_particle;
-
-    //components
-    private Rigidbody2D rb;
-
-    //public values 
-    public float dir;
-    [HideInInspector] public bool spin = false;
-    [HideInInspector] public float spin_speed;
+    private SpriteRenderer rend;
 
     void Start()
     {
-        //get references to components
-        rb = GetComponent<Rigidbody2D>();
-
-        //set rotation
-        transform.Rotate(new Vector3(0f, 0f, dir));
+        rend = GetComponent<SpriteRenderer>();
+        rend.enabled = false;
     }
 
     void Update()
     {
-        if (spin)
-            transform.Rotate(new Vector3(0, 0, spin_speed * Time.deltaTime));
-        rb.velocity = transform.right * bullet_speed;
+        if (first_frame)
+        {
+            start_pos = transform.localPosition;
+            transform.position = transform.parent.position;
+            start_time = Time.time;
+            first_frame = false;
+            rend.enabled = true;
+        }
+        if (Time.time < start_time + 1)
+        {
+            transform.localPosition = Vector3.Lerp(Vector3.zero, start_pos, (Time.time - start_time));
+        }
     }
 
-    public void destroy_bullet()
+    private void destroy_bullet()
     {
         Destroy(gameObject);
     }
@@ -58,11 +58,5 @@ public class enemyProjectile : MonoBehaviour
     {
         if (collision.gameObject.tag == "MainCamera")
             destroy_bullet(); //left camera
-    }
-
-    public IEnumerator up_speed(float WaitTime)
-    {
-        yield return new WaitForSeconds(WaitTime);
-        bullet_speed *= 3;
     }
 }

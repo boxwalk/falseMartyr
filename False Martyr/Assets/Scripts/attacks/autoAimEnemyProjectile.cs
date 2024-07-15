@@ -7,6 +7,8 @@ public class autoAimEnemyProjectile : MonoBehaviour
     //serialized values
     public float bullet_speed;
     [SerializeField] private GameObject damage_particle;
+    [SerializeField] private bool is_spider_attack = false;
+    [SerializeField] private bool is_multiSpider_attack = false;
 
     //components
     private Rigidbody2D rb;
@@ -25,6 +27,11 @@ public class autoAimEnemyProjectile : MonoBehaviour
         player = reference.Player;
 
         transform.right = player.transform.position - transform.position; //point towards player
+
+        if (is_multiSpider_attack)
+        {
+            Destroy(transform.GetChild(Random.Range(0, 4)).gameObject);
+        }
     }
 
     void Update()
@@ -39,18 +46,21 @@ public class autoAimEnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 6 && !(collision.gameObject.tag == "NoEnemyField"))
-        {  //hit walls
-            Instantiate(damage_particle, transform.position, Quaternion.identity); //instantiate particles
-            destroy_bullet();
-        }
-        else if (collision.gameObject.CompareTag("Player"))
+        if (!is_spider_attack)
         {
-            player_health playerHealth = collision.gameObject.GetComponent<player_health>();
-            if (!playerHealth.is_in_iframes)
-                playerHealth.StartCoroutine(playerHealth.take_damage());
-            Instantiate(damage_particle, transform.position, Quaternion.identity);
-            destroy_bullet();
+            if (collision.gameObject.layer == 6 && !(collision.gameObject.tag == "NoEnemyField"))
+            {  //hit walls
+                Instantiate(damage_particle, transform.position, Quaternion.identity); //instantiate particles
+                destroy_bullet();
+            }
+            else if (collision.gameObject.CompareTag("Player"))
+            {
+                player_health playerHealth = collision.gameObject.GetComponent<player_health>();
+                if (!playerHealth.is_in_iframes)
+                    playerHealth.StartCoroutine(playerHealth.take_damage());
+                Instantiate(damage_particle, transform.position, Quaternion.identity);
+                destroy_bullet();
+            }
         }
     }
 
