@@ -6,7 +6,7 @@ public class enemyProjectile : MonoBehaviour
 {
     //serialized values
     public float bullet_speed;
-    [SerializeField] private GameObject damage_particle;
+    public GameObject damage_particle;
 
     //components
     private Rigidbody2D rb;

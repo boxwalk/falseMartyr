@@ -34,6 +34,8 @@ public class swordEnemy : enemyAbstract
     private Vector3 pre_right;
     [SerializeField] private GameObject slash;
     [SerializeField] private float sword_turn_offset;
+    private bool aggresive_move = false; 
+    private Vector3 move_right;
 
     //references
     private GameObject player;
@@ -82,12 +84,28 @@ public class swordEnemy : enemyAbstract
             //movement
             if (ready_for_new_direction) //new direction is needed
             {
-                move_rotation = Random.Range(0f, 360f); //direction is randomly picked
+                int aggresive_check = Random.Range(1, 3); //2 in 3 chance for aggressive move
+                if (aggresive_check == 0)
+                {
+                    aggresive_move = false;
+                    move_rotation = Random.Range(0f, 360f); //direction is randomly picked
+                }else
+                {
+                    aggresive_move = true;
+                    transform.right =  player.transform.position - transform.position;
+                    move_right = transform.right;
+                    transform.right = Vector2.right;
+                }
                 directionResetTimer = Time.time + Random.Range(move_time_min, move_time_max);
                 ready_for_new_direction = false;
             }
-
-            transform.rotation = Quaternion.Euler(0, 0, move_rotation); //point in direction
+            if (aggresive_move)
+            {
+                transform.right = move_right;
+            }else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, move_rotation); //point in direction
+            }
             rb.velocity = speed * transform.right; //move in direction
             transform.rotation = Quaternion.identity; //look back in original direction
 

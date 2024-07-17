@@ -14,6 +14,7 @@ public class enemyHealth : MonoBehaviour
     [SerializeField] private bool spawn_check_shown;
     [SerializeField] private GameObject bonusDeathPrefab;
     private bool is_dying = false;
+    [SerializeField] private bool decrementEnemyCountOnDeath = true;
 
     //references
     private ReferenceController reference;
@@ -55,7 +56,7 @@ public class enemyHealth : MonoBehaviour
     void death() //destroy object 
     {
         is_dying = true;
-        if (TryGetComponent<minorDeity>(out minorDeity bossScript)) //checks if is minor deity
+        if (TryGetComponent(out minorDeity bossScript)) //checks if is minor deity
             StartCoroutine(minorDeityDeath(bossScript)); //special boss death
         
         else //normal death
@@ -64,7 +65,19 @@ public class enemyHealth : MonoBehaviour
             Instantiate(death_particles2, transform.position, Quaternion.identity);
             Instantiate(death_particles2, transform.position, Quaternion.identity);
 
-            room.get_room_script_at_index(cam.room_index).enemy_count--; //decrement the enemy count of the current room
+            if (bonusDeathPrefab != null)
+            {
+                GameObject deathPrefab = Instantiate(bonusDeathPrefab, transform.position, Quaternion.identity);
+
+                //special logic for ankh cultist
+                if (TryGetComponent(out ankhCultistEnemy _)){
+                    deathPrefab.transform.position = new Vector2(deathPrefab.transform.position.x, deathPrefab.transform.position.y + 0.265f);
+                    deathPrefab.GetComponent<enemyHealth>().room_index = room_index;
+                }
+            }
+
+            if(decrementEnemyCountOnDeath)
+                room.get_room_script_at_index(cam.room_index).enemy_count--; //decrement the enemy count of the current room
 
             Destroy(gameObject);
         }
