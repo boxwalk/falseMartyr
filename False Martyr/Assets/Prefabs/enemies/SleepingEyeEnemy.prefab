@@ -717,7 +717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 473d8f79a3b264c4591b52feb7f0048f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_health: 20
+  enemy_health: 15
   max_health: 0
   is_boss: 0
   death_particles: {fileID: 5199251735420826164, guid: d95c8b30def236c4db8289ccf92e3757, type: 3}
@@ -725,6 +725,7 @@ MonoBehaviour:
   spawn_check_radius: 0.45
   spawn_check_shown: 0
   bonusDeathPrefab: {fileID: 0}
+  decrementEnemyCountOnDeath: 1
   room_index: {x: 1000, y: 1000}
 --- !u!114 &7916495091581071210
 MonoBehaviour:

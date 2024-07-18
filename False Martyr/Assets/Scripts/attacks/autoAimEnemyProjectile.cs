@@ -6,9 +6,10 @@ public class autoAimEnemyProjectile : MonoBehaviour
 {
     //serialized values
     public float bullet_speed;
-    [SerializeField] private GameObject damage_particle;
+    public GameObject damage_particle;
     [SerializeField] private bool is_spider_attack = false;
     [SerializeField] private bool is_multiSpider_attack = false;
+    [HideInInspector] public float offset= 0;
 
     //components
     private Rigidbody2D rb;
@@ -27,6 +28,7 @@ public class autoAimEnemyProjectile : MonoBehaviour
         player = reference.Player;
 
         transform.right = player.transform.position - transform.position; //point towards player
+        transform.Rotate(new Vector3(0, 0, offset)); //rotate by offset
 
         if (is_multiSpider_attack)
         {

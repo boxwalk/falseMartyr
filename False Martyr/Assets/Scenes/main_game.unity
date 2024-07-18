@@ -6689,13 +6689,17 @@ MonoBehaviour:
     prefab: {fileID: 120546629607495964, guid: 7ec557ea8588f014d8fcbb506bec94e3, type: 3}
   - name: ankh head only (8)
     prefab: {fileID: 1851370774224876094, guid: 39bd8c6d4ad0db64c9c22936627b9558, type: 3}
+  - name: orb monk (9)
+    prefab: {fileID: 1345047948086215711, guid: e369a676b2251fa45a69064fe2f65598, type: 3}
+  - name: floating eye cultist (10)
+    prefab: {fileID: 5875645956800518814, guid: c34c13e7bb4fd334b8b811cd80d02b0a, type: 3}
   preset_library:
   - name: main pool
-    weight: 20
+    weight: 22
     spawnCountMin: 3
     spawnCountMax: 6
-    basicEnemies: 0000000002000000
-    mediumRarityEnemies: 0000000002000000030000000600000007000000
+    basicEnemies: 000000000200000000000000020000000a000000
+    mediumRarityEnemies: 0000000002000000030000000600000007000000090000000a000000
     RareEnemies: 000000000200000004000000
     CenterPieceEnemies: 
     SwarmEnemies: 
@@ -6706,8 +6710,8 @@ MonoBehaviour:
     spawnCountMin: 5
     spawnCountMax: 8
     basicEnemies: 02000000
-    mediumRarityEnemies: 
-    RareEnemies: 02000000020000000600000007000000
+    mediumRarityEnemies: 020000000a000000
+    RareEnemies: 020000000200000002000000060000000700000009000000
     CenterPieceEnemies: 
     SwarmEnemies: 
     swarmMultiplierMin: 1
@@ -6716,19 +6720,19 @@ MonoBehaviour:
     weight: 3
     spawnCountMin: 4
     spawnCountMax: 6
-    basicEnemies: 0000000002000000
-    mediumRarityEnemies: 00000000020000000600000007000000
+    basicEnemies: 00000000020000000a0000000000000002000000
+    mediumRarityEnemies: 00000000020000000600000007000000090000000a000000
     RareEnemies: 
     CenterPieceEnemies: 0400000004000000
     SwarmEnemies: 
     swarmMultiplierMin: 1
     swarmMultiplierMax: 1
   - name: patchwork spider
-    weight: 6
+    weight: 7
     spawnCountMin: 1
     spawnCountMax: 3
-    basicEnemies: 02000000
-    mediumRarityEnemies: 0200000006000000
+    basicEnemies: 020000000a000000
+    mediumRarityEnemies: 0200000006000000090000000a00000002000000
     RareEnemies: 
     CenterPieceEnemies: 05000000
     SwarmEnemies: 
@@ -6752,6 +6756,17 @@ MonoBehaviour:
     basicEnemies: 08000000
     mediumRarityEnemies: 
     RareEnemies: 
+    CenterPieceEnemies: 
+    SwarmEnemies: 
+    swarmMultiplierMin: 1
+    swarmMultiplierMax: 1
+  - name: monk gang
+    weight: 2
+    spawnCountMin: 3
+    spawnCountMax: 4
+    basicEnemies: 09000000
+    mediumRarityEnemies: 
+    RareEnemies: 09000000090000000900000002000000070000000a000000
     CenterPieceEnemies: 
     SwarmEnemies: 
     swarmMultiplierMin: 1
@@ -7697,63 +7712,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122814842}
   m_CullTransparentMesh: 1
---- !u!1001 &6079411601687417575
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1345047948086215711, guid: e369a676b2251fa45a69064fe2f65598, type: 3}
-      propertyPath: m_Name
-      value: OrbMonkEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6354675840465078601, guid: e369a676b2251fa45a69064fe2f65598, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 6354675840465078601, guid: e369a676b2251fa45a69064fe2f65598, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 6354675840465078601, guid: e369a676b2251fa45a69064fe2f65598, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6354675840465078601, guid: e369a676b2251fa45a69064fe2f65598, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6354675840465078601, guid: e369a676b2251fa45a69064fe2f65598, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6354675840465078601, guid: e369a676b2251fa45a69064fe2f65598, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6354675840465078601, guid: e369a676b2251fa45a69064fe2f65598, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6354675840465078601, guid: e369a676b2251fa45a69064fe2f65598, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6354675840465078601, guid: e369a676b2251fa45a69064fe2f65598, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6354675840465078601, guid: e369a676b2251fa45a69064fe2f65598, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e369a676b2251fa45a69064fe2f65598, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -7763,4 +7721,3 @@ SceneRoots:
   - {fileID: 2044333644}
   - {fileID: 228631257}
   - {fileID: 1110882933}
-  - {fileID: 6079411601687417575}

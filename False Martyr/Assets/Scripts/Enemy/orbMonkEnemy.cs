@@ -16,6 +16,17 @@ public class orbMonkEnemy : enemyAbstract
     [SerializeField] private float move_time_min;
     [SerializeField] private float move_time_max;
     [SerializeField] private LayerMask wall_mask;
+    [SerializeField] private List<GameObject> orbs;
+    private List<Vector3> orb_positions = new();
+    private List<Animator> orb_anims = new();
+    [SerializeField] private float sin_wave_magnitude;
+    [SerializeField] private float sin_wave_speed;
+    [SerializeField] private float middle_orb_sin_wave_offset;
+    [SerializeField] private GameObject bullet_prefab;
+    private bool first_frame = true;
+    [SerializeField] private float setAttackTimeplus0to4;
+    [SerializeField] private Color bulletColour;
+    [SerializeField] private GameObject bulletParticles;
 
     void Start()
     {
@@ -23,6 +34,12 @@ public class orbMonkEnemy : enemyAbstract
         //get components
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        //setup values
+        for(int i = 0; i < 3; i++)
+        {
+            orb_positions.Add(orbs[i].transform.localPosition);
+            orb_anims.Add(orbs[i].GetComponent<Animator>());
+        }
 
     }
 
@@ -33,14 +50,24 @@ public class orbMonkEnemy : enemyAbstract
         {
             enemy_behaviour(); //run enemy behaviour if activated
         }
-        else
+        //orbs
+        for (int i = 0; i < 3; i++)
         {
-            enemy_behaviour();
+            if(i == 2)
+                orbs[i].transform.localPosition = new Vector2(orb_positions[i].x, orb_positions[i].y + (Mathf.Sin((Time.time + middle_orb_sin_wave_offset) * sin_wave_speed) * sin_wave_magnitude));
+            else
+                orbs[i].transform.localPosition = new Vector2(orb_positions[i].x, orb_positions[i].y + (Mathf.Sin(Time.time * sin_wave_speed) * sin_wave_magnitude));
         }
     }
 
     void enemy_behaviour()
     {
+        if (first_frame)
+        {
+            first_frame = false;
+            StartCoroutine(orb_attack());
+        }
+
         //animation
         anim.SetBool("is_walking", true);
 
@@ -72,5 +99,31 @@ public class orbMonkEnemy : enemyAbstract
 
         if (!ready_for_new_direction && directionResetTimer < Time.time) //reset move direction
             ready_for_new_direction = true;
+    }
+
+    private IEnumerator orb_attack()
+    {
+        yield return new WaitForSeconds(Random.Range(0, 5));
+        yield return new WaitForSeconds(setAttackTimeplus0to4);
+        //fire center orb
+        spawn_attack(2);
+        yield return new WaitForSeconds(2);
+        //fire left orb
+        spawn_attack(0);
+        yield return new WaitForSeconds(2);
+        //fire right orb
+        spawn_attack(1);
+        StartCoroutine(orb_attack());
+
+    }
+
+    private void spawn_attack(int num)
+    {
+        GameObject bullet = Instantiate(bullet_prefab, orbs[num].transform.position, Quaternion.identity);
+        orb_anims[num].SetTrigger("attack");
+        SpriteRenderer rend = bullet.GetComponent<SpriteRenderer>();
+        rend.sortingOrder = 4;
+        rend.color = bulletColour;
+        bullet.GetComponent<autoAimEnemyProjectile>().damage_particle = bulletParticles;
     }
 }

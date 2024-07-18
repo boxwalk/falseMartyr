@@ -354,6 +354,7 @@ MonoBehaviour:
   spawn_check_radius: 0.61
   spawn_check_shown: 0
   bonusDeathPrefab: {fileID: 0}
+  decrementEnemyCountOnDeath: 1
   room_index: {x: 1000, y: 1000}
 --- !u!95 &4677455299478916387
 Animator:

@@ -85,6 +85,7 @@ MonoBehaviour:
   spawn_check_radius: 0.4
   spawn_check_shown: 0
   bonusDeathPrefab: {fileID: 0}
+  decrementEnemyCountOnDeath: 1
   room_index: {x: 1000, y: 1000}
 --- !u!95 &5333089307311428076
 Animator:
@@ -449,7 +450,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 213018513a4044c40b1a96999f972f36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

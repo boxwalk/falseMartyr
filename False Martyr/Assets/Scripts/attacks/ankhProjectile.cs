@@ -101,6 +101,6 @@ public class ankhProjectile : MonoBehaviour
         enemyProjectile bullet_script = bullet.GetComponent<enemyProjectile>();
         bullet_script.dir = dir;
         bullet_script.damage_particle = damage_particle;
-        bullet_script.bullet_speed = 8;
+        bullet_script.bullet_speed = bullet_speed;
     }
 }
