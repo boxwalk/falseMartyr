@@ -62,8 +62,11 @@ public class enemyHealth : MonoBehaviour
         else //normal death
         {
             Instantiate(death_particles, transform.position, Quaternion.identity);
-            Instantiate(death_particles2, transform.position, Quaternion.identity);
-            Instantiate(death_particles2, transform.position, Quaternion.identity);
+            if(!(death_particles2 == null))
+            {
+                Instantiate(death_particles2, transform.position, Quaternion.identity);
+                Instantiate(death_particles2, transform.position, Quaternion.identity);
+            }
 
             if (bonusDeathPrefab != null)
             {

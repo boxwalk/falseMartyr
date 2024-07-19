@@ -6693,14 +6693,16 @@ MonoBehaviour:
     prefab: {fileID: 1345047948086215711, guid: e369a676b2251fa45a69064fe2f65598, type: 3}
   - name: floating eye cultist (10)
     prefab: {fileID: 5875645956800518814, guid: c34c13e7bb4fd334b8b811cd80d02b0a, type: 3}
+  - name: bat caller knight (11)
+    prefab: {fileID: 5734340627113115529, guid: 534d604565d73c84a99869e88d84a6fa, type: 3}
   preset_library:
   - name: main pool
     weight: 22
     spawnCountMin: 3
     spawnCountMax: 6
     basicEnemies: 000000000200000000000000020000000a000000
-    mediumRarityEnemies: 0000000002000000030000000600000007000000090000000a000000
-    RareEnemies: 000000000200000004000000
+    mediumRarityEnemies: 0000000002000000030000000600000007000000090000000a0000000b000000
+    RareEnemies: 0000000002000000040000000a000000
     CenterPieceEnemies: 
     SwarmEnemies: 
     swarmMultiplierMin: 1
@@ -6721,7 +6723,7 @@ MonoBehaviour:
     spawnCountMin: 4
     spawnCountMax: 6
     basicEnemies: 00000000020000000a0000000000000002000000
-    mediumRarityEnemies: 00000000020000000600000007000000090000000a000000
+    mediumRarityEnemies: 00000000020000000600000007000000090000000a0000000b000000
     RareEnemies: 
     CenterPieceEnemies: 0400000004000000
     SwarmEnemies: 

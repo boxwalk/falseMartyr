@@ -161,5 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b77d044f37c55a4393029720aa98fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet_speed: 6
+  bullet_speed: 10
   damage_particle: {fileID: 1363070023380237414, guid: 5236d44445595814cb20d2662725ffa8, type: 3}
+  is_spider_attack: 0
+  is_multiSpider_attack: 0
+  offset: 0
