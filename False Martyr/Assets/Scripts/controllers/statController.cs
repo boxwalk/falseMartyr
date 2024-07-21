@@ -16,8 +16,8 @@ public class statController : MonoBehaviour
     public float range;
     public float luck;
     public float arcana;
-    public float potency;
-    public float sin;
+    public float greed;
+    public float martyrism;
     public float fervour;
 
     [Header("testing framework")]
@@ -49,5 +49,10 @@ public class statController : MonoBehaviour
     {
         luck += 1;
         room.addNewReward();
+    }
+
+    public void luckDown()
+    {
+        luck -= 1;
     }
 }

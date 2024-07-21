@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5305617851487636893}
   - component: {fileID: 285100423821259651}
   - component: {fileID: 6922466790922297602}
-  - component: {fileID: 9033101343984038340}
   m_Layer: 0
   m_Name: item
   m_TagString: Untagged
@@ -145,27 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item_id: 0
+  standard_scale: 0.0144
   pickup_particles: {fileID: 5199251735420826164, guid: fe4e4891fc3a2fb4abfd4c0a71d429e9, type: 3}
   soulPickupParticles: {fileID: 5199251735420826164, guid: 65a94fe4d774c3149aa8291b7755db00, type: 3}
   aura_particles: {fileID: 5199251735420826164, guid: ae6947e744466e240bf691d18cc355f5, type: 3}
---- !u!95 &9033101343984038340
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8755638550371420194}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 60b31fc66654ef249bf02184cbe77235, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  heartSheen: {fileID: 1141689365189256756, guid: e5e4b5aeaea2c294f8004120d0d4e780, type: 3}

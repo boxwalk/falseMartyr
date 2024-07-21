@@ -1912,8 +1912,8 @@ MonoBehaviour:
   range: 15
   luck: 3
   arcana: 5
-  potency: 5
-  sin: 25
+  greed: 5
+  martyrism: 3
   fervour: 25
   testingForm: 1
   room: {fileID: 0}
@@ -1966,20 +1966,27 @@ MonoBehaviour:
     y_offset: 70.6
     size: 2
     price: 3
-    is_item: 0
     item_index: 0
   - sprite: {fileID: -1351510108, guid: 1a685a8df8d3b3e4e8b48942bb94342c, type: 3}
     y_offset: 70.6
     size: 2
     price: 5
-    is_item: 0
     item_index: 0
   - sprite: {fileID: 21300000, guid: bc4283ed6afbf1b4f94db2fcf2160689, type: 3}
     y_offset: 88.2
     size: 1.5
-    price: 9
-    is_item: 1
+    price: 7
     item_index: 0
+  - sprite: {fileID: 21300000, guid: b84748d7ef1812444b8e2f3d36266fa5, type: 3}
+    y_offset: 70.6
+    size: 1.3
+    price: 8
+    item_index: 1
+  - sprite: {fileID: 21300000, guid: e48a76f8799d9324e987285b279416bf, type: 3}
+    y_offset: 70
+    size: 1
+    price: 7
+    item_index: 2
   shop_number: 0
   shop_items: 
 --- !u!1 &519420028
@@ -5947,15 +5954,15 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1844124530}
-  - {fileID: 1151682499}
-  - {fileID: 1905848035}
-  - {fileID: 92964648}
   - {fileID: 2071599082}
-  - {fileID: 1215472966}
+  - {fileID: 1905848035}
+  - {fileID: 1151682499}
   - {fileID: 501650525}
-  - {fileID: 1559410909}
   - {fileID: 749911371}
+  - {fileID: 92964648}
+  - {fileID: 1215472966}
+  - {fileID: 1559410909}
+  - {fileID: 1844124530}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1752195235
@@ -7565,7 +7572,11 @@ MonoBehaviour:
     item_key: soul
     is_unlimited_supply: 1
     supply: 1
+    item_scale: 0.0144
+    item_x_offset: 0
     item_y_offset: 0.75
+    is_in_shop: 1
+    shop_index: 2
     has_mod: 1
     modification_prefab: {fileID: 4651051165519057998, guid: fd7336ab32bcc954ab8620b65f723206, type: 3}
     mod_parent: body
@@ -7579,6 +7590,67 @@ MonoBehaviour:
     - mo' souls mo' problems
     - you feel healthy!
     - health up
+  - item_name: abnormal growth
+    item_sprite: {fileID: 21300000, guid: b84748d7ef1812444b8e2f3d36266fa5, type: 3}
+    item_key: growth
+    is_unlimited_supply: 0
+    supply: 3
+    item_scale: 0.010368
+    item_x_offset: 0.033
+    item_y_offset: 0.507
+    is_in_shop: 1
+    shop_index: 3
+    has_mod: 1
+    modification_prefab: {fileID: 1364861278369450581, guid: 719855eb538af674da61ecd5b7f29052, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - health up, damge up, luck down
+    - you should really get that checked out.
+    - you feel... abnormal..
+    - you should really get that checked out.
+    - you should really get that checked out.
+    - health up, damge up, luck down
+    - health up, damge up, luck down
+    - health up, damge up, luck down
+    - health up, damge up, luck down
+  - item_name: ham sandwich
+    item_sprite: {fileID: 21300000, guid: e48a76f8799d9324e987285b279416bf, type: 3}
+    item_key: ham
+    is_unlimited_supply: 0
+    supply: 2
+    item_scale: 0.0093312
+    item_x_offset: 0
+    item_y_offset: 0.51
+    is_in_shop: 1
+    shop_index: 4
+    has_mod: 1
+    modification_prefab: {fileID: 286780799797903411, guid: c4ded2be968852e4d91e86bcade6b4b2, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - health up, bullet speed up, damage down
+    - health up, bullet speed up, damage down
+    - health up, bullet speed up, damage down
+    - health up, bullet speed up, damage down
+    - health up, bullet speed up, damage down
+    - add cheese? what kind of maniac do you think I am?
+    - add cheese? what kind of maniac do you think I am?
+    - it's real ham. Take that, vegans.
+  - item_name: heart of gold
+    item_sprite: {fileID: 21300000, guid: ccf60926bc6a0fa4da2aed2aef57c199, type: 3}
+    item_key: goldHeart
+    is_unlimited_supply: 0
+    supply: 5
+    item_scale: 0.019008
+    item_x_offset: 0
+    item_y_offset: 0.479
+    is_in_shop: 0
+    shop_index: 0
+    has_mod: 1
+    modification_prefab: {fileID: 3000635787502011981, guid: 5f2823ad97925d14e9fd3c876995c0b6, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - health up, greed up, bullet speed down
+    - not in the moral sense. It's literally made of gold.
   item_prefab: {fileID: 8755638550371420194, guid: a20909be90dd4d7469b2620cb11639ed, type: 3}
 --- !u!1 &2122814842
 GameObject:

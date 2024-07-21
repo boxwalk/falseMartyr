@@ -82,6 +82,12 @@ public class enemyHealth : MonoBehaviour
             if(decrementEnemyCountOnDeath)
                 room.get_room_script_at_index(cam.room_index).enemy_count--; //decrement the enemy count of the current room
 
+            //special logic for bat caller knight
+            if (TryGetComponent(out batCallerKnightEnemy script))
+            {
+                script.death.Invoke();
+            }
+
             Destroy(gameObject);
         }
     }
@@ -141,5 +147,10 @@ public class enemyHealth : MonoBehaviour
         room.get_room_script_at_index(cam.room_index).enemy_count--; //decrement the enemy count of the current room
         Destroy(deathAnim); //destroy death anim
         Destroy(gameObject); //destroy this gameObject
+    }
+
+    public void drop_dead()
+    {
+        enemy_health = 0;
     }
 }

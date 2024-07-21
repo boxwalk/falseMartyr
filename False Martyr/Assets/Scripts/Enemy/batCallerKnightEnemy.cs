@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class batCallerKnightEnemy : enemyAbstract
 {
@@ -20,6 +21,7 @@ public class batCallerKnightEnemy : enemyAbstract
     private float move_rotation;
     [SerializeField] private LayerMask wall_mask;
     [SerializeField] private GameObject bat;
+    [HideInInspector] public UnityEvent death;
 
     void Start()
     {
@@ -96,7 +98,8 @@ public class batCallerKnightEnemy : enemyAbstract
         yield return new WaitForSeconds(Random.Range(attack_min, attack_max));
         //summon bat
         anim.SetTrigger("attack");
-        Instantiate(bat, transform.position, Quaternion.identity);
+        GameObject _bat = Instantiate(bat, transform.position, Quaternion.identity);
+        death.AddListener(_bat.GetComponent<enemyHealth>().drop_dead);
         yield return new WaitForSeconds(1/3);
         StartCoroutine(bat_summon());
     }

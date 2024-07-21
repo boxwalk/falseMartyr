@@ -384,7 +384,7 @@ public class room_controller : MonoBehaviour
 
             int item = itemController.getItemFromItemPool(); //pick item
 
-            GameObject instantiated_item = Instantiate(itemController.item_prefab, new Vector3(room_centre.x,room_centre.y +itemController.item_library[item].item_y_offset,room_centre.z), Quaternion.identity); //spawn items
+            GameObject instantiated_item = Instantiate(itemController.item_prefab, new Vector3(room_centre.x + itemController.item_library[item].item_x_offset, room_centre.y +itemController.item_library[item].item_y_offset,room_centre.z), Quaternion.identity); //spawn items
 
             instantiated_item.GetComponent<SpriteRenderer>().sprite = itemController.item_library[item].item_sprite; //set item sprite
             instantiated_item.GetComponent<itemLogic>().item_id = item; //set id correctly
@@ -436,7 +436,7 @@ public class room_controller : MonoBehaviour
         Vector3 roomcentre = GetPositionFromGridIndex(roomscript.room_index);
         for (int i = 0; i < shop_items; i++) //spawn shop items
         {
-            GameObject obj = Instantiate(shop_item, new Vector2(roomcentre.x + shop_slot_pos[i].x, roomcentre.y + shop_slot_pos[i].y), Quaternion.identity); //instantiate item prefab
+            GameObject obj = Instantiate(shop_item, new Vector3(roomcentre.x + shop_slot_pos[i].x, roomcentre.y + shop_slot_pos[i].y, 0), Quaternion.identity); //instantiate item prefab
             obj.transform.GetChild(1).gameObject.GetComponent<shopItemLogic>().item_type = shopController.shop_items[i];
         }
         Instantiate(shopkeep, new Vector2(roomcentre.x - 0.072f, roomcentre.y + 2.16f), Quaternion.identity); //instantiate shopkeep
