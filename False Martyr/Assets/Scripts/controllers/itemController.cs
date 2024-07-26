@@ -158,6 +158,24 @@ public class itemController : MonoBehaviour
             case 3:
                 heartOfGold();
                 break;
+            case 4:
+                reinforcedOrgans();
+                break;
+            case 5:
+                condensedBlessing();
+                break;
+            case 6:
+                luckyPebble();
+                break;
+            case 7:
+                levelUp();
+                break;
+            case 8:
+                amuletOfVitality();
+                break;
+            case 9:
+                heartOfThorns();
+                break;
 
             default: //mathcing item not found
                 Debug.Log("error: no item found");
@@ -194,8 +212,8 @@ public class itemController : MonoBehaviour
         player.GetComponent<player_health>().max_health_up();
         //bullet speed up
         stats.bulletSpeed += 3;
-        //damage down
-        stats.damage -= 1;
+        //greed down
+        stats.greed -= 2;
     }
 
     void heartOfGold()
@@ -206,5 +224,61 @@ public class itemController : MonoBehaviour
         stats.greed += 3;
         //bullet speed down
         stats.bulletSpeed -= 2;
+    }
+
+    void reinforcedOrgans()
+    {
+        //health up
+        player.GetComponent<player_health>().max_health_up();
+        //bullet speed up
+        stats.bulletSpeed += 5;
+        //fire rate down
+        stats.fireRate -= 2;
+    }
+
+    void condensedBlessing()
+    {
+        //health up
+        player.GetComponent<player_health>().max_health_up();
+        //fervour up
+        stats.fervour += 3;
+        //greed down
+        stats.greed -= 2;
+    }
+    void luckyPebble()
+    {
+        //health up
+        player.GetComponent<player_health>().max_health_up();
+        //luck up
+        stats.luckUp();
+        //bullet speed down
+        stats.bulletSpeed -= 2;
+    }
+    void levelUp()
+    {
+        //health up
+        player.GetComponent<player_health>().max_health_up();
+        //bullet size up
+        stats.bulletSize += 2;
+        //martyrism down
+        stats.martyrism -= 1;
+    }
+    void amuletOfVitality()
+    {
+        //health up
+        player.GetComponent<player_health>().max_health_up();
+        //arcana up
+        stats.arcana += 3;
+        //martyrism down
+        stats.martyrism -= 1;
+    }
+    void heartOfThorns() //now renamed throny heart
+    {
+        //health up
+        player.GetComponent<player_health>().max_health_up();
+        //martyrism up
+        stats.martyrism += 2;
+        //fervour down
+        stats.fervour -= 2;
     }
 }

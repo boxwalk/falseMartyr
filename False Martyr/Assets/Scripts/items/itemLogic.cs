@@ -20,6 +20,7 @@ public class itemLogic : MonoBehaviour
     [SerializeField] private GameObject soulPickupParticles;
     [SerializeField] private GameObject aura_particles;
     [SerializeField] private GameObject heartSheen;
+    [SerializeField] private GameObject lvUp_particles;
 
 
     void Start()
@@ -64,6 +65,8 @@ public class itemLogic : MonoBehaviour
             Instantiate(aura_particles, transform.position, Quaternion.identity,transform); //aura particles
         if (item_id == 3) //heart of gold logic
             Instantiate(heartSheen, transform.position, Quaternion.identity, transform); //sheen
+        if (item_id == 7) //LEVEL UP! logic
+            Instantiate(lvUp_particles, transform.position, Quaternion.identity, transform); //aura particles
     }
 
     void unique_update_logic() //special logic for each item on update

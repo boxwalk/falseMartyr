@@ -149,3 +149,4 @@ MonoBehaviour:
   soulPickupParticles: {fileID: 5199251735420826164, guid: 65a94fe4d774c3149aa8291b7755db00, type: 3}
   aura_particles: {fileID: 5199251735420826164, guid: ae6947e744466e240bf691d18cc355f5, type: 3}
   heartSheen: {fileID: 1141689365189256756, guid: e5e4b5aeaea2c294f8004120d0d4e780, type: 3}
+  lvUp_particles: {fileID: 5199251735420826164, guid: b7d03b3cad3306448b3402521505ae51, type: 3}
