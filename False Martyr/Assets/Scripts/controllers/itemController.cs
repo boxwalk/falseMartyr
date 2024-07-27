@@ -28,6 +28,7 @@ public class itemController : MonoBehaviour
     //variable decleration
     public List<item> item_library;
     public GameObject item_prefab;
+    [SerializeField] private int lucky_item = 0;
 
     //references
     private ReferenceController reference;
@@ -113,10 +114,18 @@ public class itemController : MonoBehaviour
     private void refillItemPool()
     {
         temp_item_pool.Clear();
-        for (int i = 0; i < item_library.Count; i++)
+        if(lucky_item != 0)
         {
-            if(item_library[i].is_unlimited_supply || item_library[i].supply > 0)
-                temp_item_pool.Add(i);
+            temp_item_pool.Add(lucky_item); //lucky item logic for testing
+            lucky_item = 0;
+        }
+        else
+        { //actual algorithm here
+            for (int i = 0; i < item_library.Count; i++)
+            {
+                if (item_library[i].is_unlimited_supply || item_library[i].supply > 0)
+                    temp_item_pool.Add(i);
+            }
         }
     }
 

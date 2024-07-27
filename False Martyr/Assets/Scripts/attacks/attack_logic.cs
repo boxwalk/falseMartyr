@@ -38,7 +38,7 @@ public class attack_logic : MonoBehaviour
         stats = reference.StatController;
 
         //set up characteristics
-        damage = stats.damage;
+        damage = stats.final_damage;
         range = stats.range;
         bullet_speed = stats.bulletSpeed;
         baseSize = transform.localScale.x;

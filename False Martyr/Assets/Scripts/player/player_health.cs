@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class player_health : MonoBehaviour
 {
      //serialized values
-    [SerializeField] private float i_frames_duration;
     [SerializeField] private float shake_duration;
     [SerializeField] private float shake_magnitude;
     [SerializeField] private float wait_time_After_death;
@@ -20,6 +19,7 @@ public class player_health : MonoBehaviour
     private camera_controller cam;
     private gameplayController gameplay;
     private statController stats;
+    private Animator Ui_animator;
     [SerializeField] private GameObject damage_particles;
     [SerializeField] private GameObject death_particles;
     [SerializeField] private GameObject death2_particles;
@@ -35,6 +35,7 @@ public class player_health : MonoBehaviour
         cam = reference.CameraController;
         gameplay = reference.GameplayController;
         stats = reference.StatController;
+        Ui_animator = reference.UIController.gameObject.GetComponent<Animator>();
         //get components
         anim = GetComponent<Animator>();
     }
@@ -68,13 +69,20 @@ public class player_health : MonoBehaviour
             stats.health--; //decrement health
 
         is_in_iframes = true; //start i frames
+        if(stats.martyrism > 3)
+        {
+            Ui_animator.SetBool("martyrismSymbol", true); //martyrism symbol
+            stats.temp_damage += stats.martyrism_damage_boost; //martyrism damage bonus
+        }
         if (stats.health + stats.spiritHealth <= 0) //check for death
             StartCoroutine(death());
         else{
             Instantiate(damage_particles, transform.position, Quaternion.identity); //damage particles
-            yield return new WaitForSeconds(i_frames_duration);
+            yield return new WaitForSeconds(stats.i_frame_time);
             is_in_iframes = false; //end i frames
-        }yield return new WaitForSeconds(0.1f);
+            Ui_animator.SetBool("martyrismSymbol", false); //martyrism symbol
+        }
+        yield return new WaitForSeconds(0.1f);
     }
 
     IEnumerator death()

@@ -10,6 +10,7 @@ public class gameplayController : MonoBehaviour
     private camera_controller cam;
     private room_controller room_controller;
     private itemController itemController;
+    private statController stats;
 
     //rooms
     private Vector2Int  previous_room = new Vector2Int(0,0);
@@ -43,6 +44,7 @@ public class gameplayController : MonoBehaviour
         cam = reference.CameraController;
         room_controller = reference.RoomController;
         itemController = reference.ItemController;
+        stats = reference.StatController;
     }
 
     void Update()
@@ -91,6 +93,7 @@ public class gameplayController : MonoBehaviour
 
     private IEnumerator clear_room(GameObject new_room, room_logic room_script)
     {
+        stats.temp_damage = 0; //reset temp damage
         new_room.GetComponent<Animator>().SetTrigger("open_doors");
         yield return new WaitForSeconds(0.33f);
 
