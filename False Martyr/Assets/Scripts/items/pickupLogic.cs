@@ -14,6 +14,9 @@ public class pickupLogic : MonoBehaviour
     private player_coins player_coins;
     private statController stats;
 
+    //values
+    public int greed_count;
+
     void Start() 
     {
         //get references
@@ -39,7 +42,7 @@ public class pickupLogic : MonoBehaviour
             }
             else if(pickup_type == "coin")
             {
-                player_coins.gain_coins(1); //coin picked up
+                player_coins.gain_coins(1, greed_count); //coin picked up
             }
             Destroy(gameObject);
         }

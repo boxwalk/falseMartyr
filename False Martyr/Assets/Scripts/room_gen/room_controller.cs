@@ -57,7 +57,7 @@ public class room_controller : MonoBehaviour
     private roomConfigController configController;
 
     //prefabs
-    [SerializeField] private GameObject item_pedestal;
+    public GameObject item_pedestal;
     [SerializeField] private GameObject shop_item;
     [SerializeField] private GameObject shopkeep;
 

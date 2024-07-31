@@ -28,7 +28,7 @@ public class gameplayController : MonoBehaviour
 
     //layermasksp
     [SerializeField] private LayerMask player_mask;
-    [SerializeField] private LayerMask reward_mask;
+    public LayerMask reward_mask;
 
     //reward spawning
     private List<int> heart_spawns = new List<int> { 1, 1, 1, 2 };
@@ -155,7 +155,9 @@ public class gameplayController : MonoBehaviour
         Instantiate(itemPedestal, new Vector2(room_centre.x + pedestal_offset, room_centre.y), Quaternion.identity); //spawn pedestal
         GameObject instantiated_item = Instantiate(itemController.item_prefab, new Vector3(room_centre.x + pedestal_offset, room_centre.y + itemController.item_library[item].item_y_offset, room_centre.z), Quaternion.identity); //spawn items
         instantiated_item.GetComponent<SpriteRenderer>().sprite = itemController.item_library[item].item_sprite; //set item sprite
-        instantiated_item.GetComponent<itemLogic>().item_id = item; //set id correctly
+        itemLogic itemScript = instantiated_item.GetComponent<itemLogic>(); //get script
+        itemScript.item_id = item; //set id 
+        itemScript.greedable = false;
     }
 
     /*

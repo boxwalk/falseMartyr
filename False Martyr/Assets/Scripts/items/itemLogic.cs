@@ -10,6 +10,7 @@ public class itemLogic : MonoBehaviour
     private float magnitude = 0.15f;
     private float speed = 2.5f;
     [SerializeField] private float standard_scale;
+    public bool greedable;
 
     //references
     private ReferenceController reference;
@@ -46,7 +47,7 @@ public class itemLogic : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            item.pickup_item(item_id); //pickup item
+            item.pickup_item(item_id, greedable); //pickup item
             Instantiate(pickup_particles, transform.position, Quaternion.identity); //pickup particles
             unique_pickup_logic(); //run unique pickup logic for each item
             Destroy(gameObject); //destroy item
@@ -85,13 +86,14 @@ public class itemLogic : MonoBehaviour
         float scale = item.item_library[item_id].item_scale;
         float startTime = Time.time;
         Vector3 final_scale = new Vector3(scale,scale);
-        while (Time.time < startTime + 1)
-        {
-            transform.localScale = Vector3.Lerp(Vector3.zero,final_scale,Time.time - startTime);
-            yield return null;
-        }
-        transform.localScale = new Vector3(scale, scale);
+        transform.localScale = final_scale;
         BoxCollider2D col = GetComponent<BoxCollider2D>();
         col.size = new Vector2((standard_scale / scale) * col.size.x, (standard_scale / scale) * col.size.y);
+        while (Time.time < startTime + 0.7f)
+        {
+            transform.localScale = Vector3.Lerp(Vector3.zero,final_scale,(Time.time - startTime)* 1.42857142857f);
+            yield return null;
+        }
+        transform.localScale = final_scale;
     }
 }

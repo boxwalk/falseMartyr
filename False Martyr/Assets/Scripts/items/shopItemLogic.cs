@@ -46,11 +46,11 @@ public class shopItemLogic : MonoBehaviour
                 if((!(item_type == 0)) || (item_type == 0 && !(stats.health == stats.maxhealth))) //hearts cannot be picked up if on full health
                 {
                     //buy item
-                    playerCoins.gain_coins(price * -1); //charge money
+                    playerCoins.gain_coins(price * -1 , 10); //charge money
 
                     if (item_type > 1) //check if it is an item
                     {
-                        itemController.pickup_item(shopController.shop_library[item_type].item_index); //pickup item
+                        itemController.pickup_item(shopController.shop_library[item_type].item_index, false); //pickup item
                     }
                     else
                     {

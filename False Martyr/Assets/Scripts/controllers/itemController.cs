@@ -36,9 +36,12 @@ public class itemController : MonoBehaviour
     private UIController ui;
     private statController stats;
     private shopController shop;
+    private room_controller room;
+    private camera_controller cam;
 
     //temp variables
     private List<int> temp_item_pool = new();
+    private GameObject greed_bonus;
 
     void Start()
     {
@@ -48,6 +51,9 @@ public class itemController : MonoBehaviour
         ui = reference.UIController;
         stats = reference.StatController;
         shop = reference.ShopController;
+        room = reference.RoomController;
+        cam = reference.CameraController;
+        greed_bonus = player.GetComponent<player_coins>().greedBonus;
 
         //Shop item gen
         shop.shop_number = (int)(Random.Range(0, 5) + stats.luck); //get number of shop items
@@ -150,7 +156,7 @@ public class itemController : MonoBehaviour
         return picked_item;
     }
 
-    public void pickup_item(int itemIndex) //item picked up
+    public void pickup_item(int itemIndex, bool greedable) //item picked up
     {
         //run pickup item logic
         switch (itemIndex) //switcher with index
@@ -197,6 +203,32 @@ public class itemController : MonoBehaviour
 
         //flavour text
         ui.flavourText(item_library[itemIndex].item_name, item_library[itemIndex].flavour_texts[Random.Range(0, item_library[itemIndex].flavour_texts.Count)]); //get name and flavour text
+
+        //greed bonus
+        int greed_chance = Random.Range(1, 101);
+        if (greed_chance < stats.greed_extra_item_chance && greedable)
+        {
+            //greed proc
+            int pos = Random.Range(0, 2); //pick x posiition
+            float x_pos;
+            Vector3 room_centre = room.GetPositionFromGridIndex(cam.room_index);
+            if (pos == 0)
+                x_pos = 5;
+            else
+                x_pos = -5;
+
+            //spawn item
+            Instantiate(room.item_pedestal, new Vector2(room_centre.x + x_pos, room_centre.y), Quaternion.identity); //spawn pedestal
+            int item = getItemFromItemPool(); //pick item
+            GameObject instantiated_item = Instantiate(item_prefab, new Vector3(room_centre.x + item_library[item].item_x_offset + x_pos, room_centre.y + item_library[item].item_y_offset, room_centre.z), Quaternion.identity); //spawn items
+            instantiated_item.GetComponent<SpriteRenderer>().sprite = item_library[item].item_sprite; //set item sprite
+            itemLogic itemScript = instantiated_item.GetComponent<itemLogic>(); //get script
+            itemScript.item_id = item; //set id 
+            itemScript.greedable = false;
+
+
+            Instantiate(greed_bonus, player.transform.position, Quaternion.identity); //particle
+        }
     }
 
     void grafted_soul() //logic on pickup of grated soul

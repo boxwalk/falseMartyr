@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item_id: 0
   standard_scale: 0.0144
+  greedable: 1
   pickup_particles: {fileID: 5199251735420826164, guid: fe4e4891fc3a2fb4abfd4c0a71d429e9, type: 3}
   soulPickupParticles: {fileID: 5199251735420826164, guid: 65a94fe4d774c3149aa8291b7755db00, type: 3}
   aura_particles: {fileID: 5199251735420826164, guid: ae6947e744466e240bf691d18cc355f5, type: 3}

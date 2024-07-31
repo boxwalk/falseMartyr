@@ -23,6 +23,8 @@ public class statController : MonoBehaviour
     [HideInInspector] public float martyrism_damage_boost;
     [HideInInspector] public float temp_damage;
     [HideInInspector] public float final_damage;
+    [HideInInspector] public float greed_extra_item_chance;
+    [HideInInspector] public float greed_extra_coin_chance;
 
     [Header("testing framework")]
     public bool testingForm;
@@ -78,6 +80,15 @@ public class statController : MonoBehaviour
 
         //calculate final damage
         final_damage = temp_damage + damage;
+
+        //calculate greed bonuses
+        greed_extra_coin_chance = greed * 5;
+        if (greed < 5)
+            greed_extra_item_chance = greed;
+        else if (greed == 5)
+            greed_extra_item_chance = 8;
+        else
+            greed_extra_item_chance = greed * 3;
     }
 
     public void luckUp()
