@@ -8126,6 +8126,160 @@ MonoBehaviour:
     - health up, martyrism up, fervour down
     - joining the list of worst peoplr to get a transplant from
     - great title for a new emo rock album, right?
+  - item_name: ritual dagger
+    item_sprite: {fileID: 21300000, guid: 3f38baab42f04d14088d70fc0f398a23, type: 3}
+    item_key: dagger
+    is_unlimited_supply: 1
+    supply: 1
+    item_scale: 0.0144
+    item_x_offset: -0.262
+    item_y_offset: 0.75
+    is_in_shop: 0
+    shop_index: 0
+    has_mod: 0
+    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - damage up
+    - damage up
+    - damage up
+    - it's ol' reliable. also ol' stabbyable
+    - so what if it's sacrificed a few people?
+  - item_name: haunted tome
+    item_sprite: {fileID: 21300000, guid: a5c3d53b44b6a77428cafa25241c134a, type: 3}
+    item_key: tome
+    is_unlimited_supply: 0
+    supply: 2
+    item_scale: 0.01296
+    item_x_offset: 0.097
+    item_y_offset: 0.558
+    is_in_shop: 0
+    shop_index: 0
+    has_mod: 0
+    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - fire rate up
+  - item_name: giant's blood
+    item_sprite: {fileID: 21300000, guid: d6f25770564f39746b58bb87fe2dab37, type: 3}
+    item_key: giantsBlood
+    is_unlimited_supply: 0
+    supply: 1
+    item_scale: 0.0216
+    item_x_offset: 0.041
+    item_y_offset: 0.565
+    is_in_shop: 0
+    shop_index: 0
+    has_mod: 0
+    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - bullet size up
+  - item_name: arcane sigil
+    item_sprite: {fileID: 21300000, guid: 7cd0780ed7ca0d747b36761e989d5194, type: 3}
+    item_key: sigil
+    is_unlimited_supply: 1
+    supply: 1
+    item_scale: 0.01152
+    item_x_offset: 0.03
+    item_y_offset: 0.581
+    is_in_shop: 0
+    shop_index: 0
+    has_mod: 0
+    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - arcana up
+  - item_name: false idol
+    item_sprite: {fileID: 21300000, guid: bc3db5246e54a5b4699e4a6320901c1c, type: 3}
+    item_key: idol
+    is_unlimited_supply: 0
+    supply: 5
+    item_scale: 0.01152
+    item_x_offset: 0
+    item_y_offset: 0.534
+    is_in_shop: 0
+    shop_index: 0
+    has_mod: 0
+    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - greed up
+  - item_name: sharp tooth
+    item_sprite: {fileID: 21300000, guid: bfad849927f37814fa3b0b78167ae993, type: 3}
+    item_key: tooth
+    is_unlimited_supply: 0
+    supply: 2
+    item_scale: 0.0144
+    item_x_offset: 0.07
+    item_y_offset: 0.5
+    is_in_shop: 0
+    shop_index: 0
+    has_mod: 0
+    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - damage up, luck up, bullet speed down
+  - item_name: raven's feather
+    item_sprite: {fileID: 21300000, guid: 4f95e14d4d221e2468b8d7a980a801ea, type: 3}
+    item_key: feather
+    is_unlimited_supply: 0
+    supply: 2
+    item_scale: 0.015552
+    item_x_offset: 0
+    item_y_offset: 0.667
+    is_in_shop: 0
+    shop_index: 0
+    has_mod: 0
+    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - arcana up, range up, luck down
+  - item_name: golden butchering knife
+    item_sprite: {fileID: 21300000, guid: 22477585e6136664c9aeb1464f789648, type: 3}
+    item_key: butcher
+    is_unlimited_supply: 1
+    supply: 2
+    item_scale: 0.01152
+    item_x_offset: 0.038
+    item_y_offset: 0.536
+    is_in_shop: 0
+    shop_index: 0
+    has_mod: 0
+    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - martyrism up, greed up, range down
+  - item_name: coveted pearl
+    item_sprite: {fileID: 21300000, guid: 209b70614e9d54143bbd4fd587d2f36d, type: 3}
+    item_key: pearl
+    is_unlimited_supply: 0
+    supply: 1
+    item_scale: 0.02304
+    item_x_offset: 0
+    item_y_offset: 0.431
+    is_in_shop: 0
+    shop_index: 0
+    has_mod: 0
+    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - fire rate up, greed up, damage down
+  - item_name: holy seal
+    item_sprite: {fileID: 21300000, guid: abfb2d311fe577b469b6eddb8e30c488, type: 3}
+    item_key: holySeal
+    is_unlimited_supply: 0
+    supply: 1
+    item_scale: 0.01152
+    item_x_offset: 0.038
+    item_y_offset: 0.507
+    is_in_shop: 0
+    shop_index: 0
+    has_mod: 0
+    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - fervour up, arcana up, greed down
   item_prefab: {fileID: 8755638550371420194, guid: a20909be90dd4d7469b2620cb11639ed, type: 3}
   lucky_item: 0
 --- !u!1 &2122814842

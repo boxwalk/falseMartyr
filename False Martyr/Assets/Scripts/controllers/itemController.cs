@@ -232,7 +232,8 @@ public class itemController : MonoBehaviour
             reference.ModificationController.create_modification(itemIndex); //create mod
 
         //flavour text
-        ui.flavourText(item_library[itemIndex].item_name, item_library[itemIndex].flavour_texts[Random.Range(0, item_library[itemIndex].flavour_texts.Count)]); //get name and flavour text
+        //ui.flavourText(item_library[itemIndex].item_name, item_library[itemIndex].flavour_texts[Random.Range(0, item_library[itemIndex].flavour_texts.Count)]); //get name and flavour text
+        ui.flavourText(item_library[itemIndex].item_name, item_library[itemIndex].flavour_texts[0]); //for now, only descriptive flavour texts
 
         //greed bonus
         int greed_chance = Random.Range(1, 101);

@@ -83,12 +83,18 @@ public class itemLogic : MonoBehaviour
 
     private IEnumerator Scale()
     {
+        float scale_x = item.item_library[item_id].item_scale;
         float scale = item.item_library[item_id].item_scale;
+        if (item_id == 11) //ritual dagger logic
+        {
+            scale_x = 0.019008f;
+            scale = 0.01584f;
+        }
         float startTime = Time.time;
         Vector3 final_scale = new Vector3(scale,scale);
         transform.localScale = final_scale;
         BoxCollider2D col = GetComponent<BoxCollider2D>();
-        col.size = new Vector2((standard_scale / scale) * col.size.x, (standard_scale / scale) * col.size.y);
+        col.size = new Vector2((standard_scale / scale_x) * col.size.x, (standard_scale / scale) * col.size.y);
         while (Time.time < startTime + 0.7f)
         {
             transform.localScale = Vector3.Lerp(Vector3.zero,final_scale,(Time.time - startTime)* 1.42857142857f);
