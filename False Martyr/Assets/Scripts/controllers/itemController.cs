@@ -191,6 +191,36 @@ public class itemController : MonoBehaviour
             case 9:
                 heartOfThorns();
                 break;
+            case 10:
+                ritualDagger();
+                break;
+            case 11:
+                hauntedTome();
+                break;
+            case 12:
+                giantsBlood();
+                break;
+            case 13:
+                arcaneSigil();
+                break;
+            case 14:
+                falseIdol();
+                break;
+            case 15:
+                sharpTooth();
+                break;
+            case 16:
+                ravensFeather();
+                break;
+            case 17:
+                sacredButcheringKnife();
+                break;
+            case 18:
+                covetedPearl();
+                break;
+            case 19:
+                holySeal();
+                break;
 
             default: //mathcing item not found
                 Debug.Log("error: no item found");
@@ -321,5 +351,75 @@ public class itemController : MonoBehaviour
         stats.martyrism += 2;
         //fervour down
         stats.fervour -= 2;
+    }
+    void ritualDagger()
+    {
+        //damage up
+        stats.damage += 4;
+    }
+    void hauntedTome()
+    {
+        //fire rate up
+        stats.fireRate += 3;
+    }
+    void giantsBlood()
+    {
+        //bullet size up
+        stats.bulletSize += 8;
+    }
+    void arcaneSigil()
+    {
+        //arcana up
+        stats.arcana += 10;
+    }
+    void falseIdol()
+    {
+        //greed up
+        stats.greed += 6;
+    }
+    void sharpTooth()
+    {
+        //damage up
+        stats.damage += 3;
+        //luck up
+        stats.luckUp();
+        //bullet speed down
+        stats.bulletSpeed -= 2;
+    }
+    void ravensFeather()
+    {
+        //arcana up
+        stats.arcana += 8;
+        //range up
+        stats.range += 5;
+        //luck down
+        stats.luckDown();
+    }
+    void sacredButcheringKnife()
+    {
+        //martyrism up
+        stats.martyrism += 5;
+        //greed up
+        stats.greed += 4;
+        //range down
+        stats.arcana -= 4;
+    }
+    void covetedPearl()
+    {
+        //fire rate up
+        stats.fireRate += 2;
+        //greed up
+        stats.greed += 3;
+        //damage down
+        stats.damage -= 1;
+    }
+    void holySeal()
+    {
+        //fervour up
+        stats.fervour += 5;
+        //arcana up
+        stats.arcana += 4;
+        //greed down
+        stats.greed -= 2;
     }
 }
