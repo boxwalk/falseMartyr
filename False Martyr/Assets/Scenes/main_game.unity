@@ -8136,8 +8136,8 @@ MonoBehaviour:
     item_y_offset: 0.75
     is_in_shop: 0
     shop_index: 0
-    has_mod: 0
-    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    has_mod: 1
+    modification_prefab: {fileID: 2662085304571150561, guid: d0f7decd014a79e4dabcaf03d486bbb0, type: 3}
     mod_parent: body
     flavour_texts:
     - damage up
@@ -8155,8 +8155,8 @@ MonoBehaviour:
     item_y_offset: 0.558
     is_in_shop: 0
     shop_index: 0
-    has_mod: 0
-    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    has_mod: 1
+    modification_prefab: {fileID: 5035276749483030073, guid: ede584b321a59af4fb363e4f9a813547, type: 3}
     mod_parent: body
     flavour_texts:
     - fire rate up
@@ -8170,8 +8170,8 @@ MonoBehaviour:
     item_y_offset: 0.565
     is_in_shop: 0
     shop_index: 0
-    has_mod: 0
-    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    has_mod: 1
+    modification_prefab: {fileID: 4446069389401872198, guid: d8656ec68e3ef2346bfd1b01900fcd44, type: 3}
     mod_parent: body
     flavour_texts:
     - bullet size up
@@ -8185,8 +8185,8 @@ MonoBehaviour:
     item_y_offset: 0.581
     is_in_shop: 0
     shop_index: 0
-    has_mod: 0
-    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    has_mod: 1
+    modification_prefab: {fileID: 5648128527966473967, guid: d5f3dadaf15fc584ab6b641e3c8efbe5, type: 3}
     mod_parent: body
     flavour_texts:
     - arcana up
@@ -8200,8 +8200,8 @@ MonoBehaviour:
     item_y_offset: 0.534
     is_in_shop: 0
     shop_index: 0
-    has_mod: 0
-    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    has_mod: 1
+    modification_prefab: {fileID: 3620603647640006995, guid: e2c2a8179795ae6438c3353eeddb8b76, type: 3}
     mod_parent: body
     flavour_texts:
     - greed up
@@ -8215,8 +8215,8 @@ MonoBehaviour:
     item_y_offset: 0.5
     is_in_shop: 0
     shop_index: 0
-    has_mod: 0
-    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    has_mod: 1
+    modification_prefab: {fileID: 3829616411984874004, guid: 64905e7ef26b6534888866fb522dea28, type: 3}
     mod_parent: body
     flavour_texts:
     - damage up, luck up, bullet speed down
@@ -8230,8 +8230,8 @@ MonoBehaviour:
     item_y_offset: 0.667
     is_in_shop: 0
     shop_index: 0
-    has_mod: 0
-    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    has_mod: 1
+    modification_prefab: {fileID: 3589604381128155519, guid: cf9b3ec91cba59a4fa3c99071537d56b, type: 3}
     mod_parent: body
     flavour_texts:
     - arcana up, range up, luck down
@@ -8245,8 +8245,8 @@ MonoBehaviour:
     item_y_offset: 0.536
     is_in_shop: 0
     shop_index: 0
-    has_mod: 0
-    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    has_mod: 1
+    modification_prefab: {fileID: 5075152425645726350, guid: b97a38b77b617474fa06061815b279ad, type: 3}
     mod_parent: body
     flavour_texts:
     - martyrism up, greed up, range down
@@ -8260,8 +8260,8 @@ MonoBehaviour:
     item_y_offset: 0.431
     is_in_shop: 0
     shop_index: 0
-    has_mod: 0
-    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    has_mod: 1
+    modification_prefab: {fileID: 2654907055179598121, guid: 81b9351e0852954498f11eb70912f051, type: 3}
     mod_parent: body
     flavour_texts:
     - fire rate up, greed up, damage down
@@ -8275,8 +8275,8 @@ MonoBehaviour:
     item_y_offset: 0.507
     is_in_shop: 0
     shop_index: 0
-    has_mod: 0
-    modification_prefab: {fileID: 3923697905618040641, guid: e9267b687cf14f34bba5ea55824c7ea4, type: 3}
+    has_mod: 1
+    modification_prefab: {fileID: 8843199581175043642, guid: e4bd4e3d8abb7d84cbb1e641ff9394f5, type: 3}
     mod_parent: body
     flavour_texts:
     - fervour up, arcana up, greed down
