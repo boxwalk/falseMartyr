@@ -113,6 +113,7 @@ MonoBehaviour:
   attack_dir: 1
   explosion_particle: {fileID: 5199251735420826164, guid: d95c8b30def236c4db8289ccf92e3757, type: 3}
   damage_particle: {fileID: 1363070023380237414, guid: c7fd30172e70d0b42875035bd3babd16, type: 3}
+  gaintsBloodSprite: {fileID: 21300000, guid: 259afa519cee7144c98228d4bb433f06, type: 3}
 --- !u!95 &6557908710397158107
 Animator:
   serializedVersion: 5

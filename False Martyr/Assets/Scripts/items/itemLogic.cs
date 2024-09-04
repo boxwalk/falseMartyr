@@ -22,6 +22,8 @@ public class itemLogic : MonoBehaviour
     [SerializeField] private GameObject aura_particles;
     [SerializeField] private GameObject heartSheen;
     [SerializeField] private GameObject lvUp_particles;
+    [SerializeField] private GameObject Arcane_aura_particles;
+    [SerializeField] private GameObject Haunted_aura_particles;
 
 
     void Start()
@@ -68,6 +70,10 @@ public class itemLogic : MonoBehaviour
             Instantiate(heartSheen, transform.position, Quaternion.identity, transform); //sheen
         if (item_id == 7) //LEVEL UP! logic
             Instantiate(lvUp_particles, transform.position, Quaternion.identity, transform); //aura particles
+        if (item_id == 11) //haunted tome logic
+            Instantiate(Haunted_aura_particles, transform.position, Quaternion.identity, transform); //aura particles
+        if (item_id == 13) //arcane sigil logic
+            Instantiate(Arcane_aura_particles, transform.position, Quaternion.identity, transform); //aura particles
     }
 
     void unique_update_logic() //special logic for each item on update

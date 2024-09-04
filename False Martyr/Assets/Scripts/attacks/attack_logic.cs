@@ -20,6 +20,10 @@ public class attack_logic : MonoBehaviour
     //reference
     private ReferenceController reference;
     private statController stats;
+    private SpriteRenderer rend;
+
+    //sprites
+    [SerializeField] private Sprite gaintsBloodSprite;
 
     //main values
     private float baseSize;
@@ -36,6 +40,7 @@ public class attack_logic : MonoBehaviour
         //get references
         reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
         stats = reference.StatController;
+        rend = transform.GetChild(0).GetComponent<SpriteRenderer>();
 
         //set up characteristics
         damage = stats.final_damage;
@@ -45,6 +50,9 @@ public class attack_logic : MonoBehaviour
         float newScale = baseSize * (stats.bulletSize / 10);
         transform.localScale = new Vector3(newScale, newScale, transform.localScale.z);
         initializedTime = Time.time;
+        //pick sprite
+        if (stats.passiveItemEffects.Contains("giantsBlood"))
+            rend.sprite = gaintsBloodSprite; // giant's blood item effect
     }
 
     void Update()

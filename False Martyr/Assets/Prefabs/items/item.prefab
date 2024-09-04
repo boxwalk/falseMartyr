@@ -151,3 +151,5 @@ MonoBehaviour:
   aura_particles: {fileID: 5199251735420826164, guid: ae6947e744466e240bf691d18cc355f5, type: 3}
   heartSheen: {fileID: 1141689365189256756, guid: e5e4b5aeaea2c294f8004120d0d4e780, type: 3}
   lvUp_particles: {fileID: 5199251735420826164, guid: b7d03b3cad3306448b3402521505ae51, type: 3}
+  Arcane_aura_particles: {fileID: 5199251735420826164, guid: b6f1483cb4e4e10418be47e363ce03a5, type: 3}
+  Haunted_aura_particles: {fileID: 5199251735420826164, guid: 49b6532d6f37e9e4dbb50c982e39e813, type: 3}

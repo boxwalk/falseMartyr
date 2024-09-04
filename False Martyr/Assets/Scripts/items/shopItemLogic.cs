@@ -30,7 +30,7 @@ public class shopItemLogic : MonoBehaviour
         price = shopController.shop_library[item_type].price;
         transform.parent.GetChild(0).GetComponent<TextMeshPro>().text = price.ToString();
         transform.localScale = new Vector2(shopController.shop_library[item_type].size, shopController.shop_library[item_type].size);
-        transform.localPosition = new Vector2(transform.localPosition.x, shopController.shop_library[item_type].y_offset);
+        transform.localPosition = new Vector2(transform.localPosition.x + shopController.shop_library[item_type].x_offset, shopController.shop_library[item_type].y_offset);
         GetComponent<SpriteRenderer>().sprite = shopController.shop_library[item_type].sprite;
         BoxCollider2D coll = GetComponent<BoxCollider2D>();
         coll.size = new Vector2((2f / transform.localScale.x) * coll.size.x, (2f / transform.localScale.x) * coll.size.y);

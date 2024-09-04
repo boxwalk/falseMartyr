@@ -28,6 +28,7 @@ public class itemController : MonoBehaviour
     //variable decleration
     public List<item> item_library;
     public GameObject item_prefab;
+    [SerializeField] private List<GameObject> extra_prefabs;
     [SerializeField] private int lucky_item = 0;
 
     //references
@@ -367,6 +368,8 @@ public class itemController : MonoBehaviour
     {
         //bullet size up
         stats.bulletSize += 8;
+        //bullet effect
+        stats.passiveItemEffects.Add("giantsBlood");
     }
     void arcaneSigil()
     {
@@ -377,6 +380,9 @@ public class itemController : MonoBehaviour
     {
         //greed up
         stats.greed += 6;
+        //extra mods
+        Instantiate(extra_prefabs[0], player.transform.GetChild(0).GetChild(1));
+        Instantiate(extra_prefabs[1], player.transform.GetChild(0).GetChild(2));
     }
     void sharpTooth()
     {

@@ -18,6 +18,7 @@ public class shopController : MonoBehaviour
     {
         public Sprite sprite;
         public float y_offset;
+        public float x_offset;
         public float size;
         public int price;
         public int item_index;
