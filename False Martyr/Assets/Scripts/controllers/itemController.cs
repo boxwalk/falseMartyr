@@ -222,6 +222,15 @@ public class itemController : MonoBehaviour
             case 19:
                 holySeal();
                 break;
+            case 20:
+                wigglyWorm();
+                break;
+            case 21:
+                twoFacedMask();
+                break;
+            case 22:
+                boneFracture();
+                break;
 
             default: //mathcing item not found
                 Debug.Log("error: no item found");
@@ -429,4 +438,30 @@ public class itemController : MonoBehaviour
         //greed down
         stats.greed -= 2;
     }
+    void wigglyWorm()
+    {
+        //damage up
+        stats.damage += 1;
+        //fire rate up
+        stats.fireRate += 3;
+        //bullet speed down
+        stats.bulletSpeed -= 4;
+        //bullet effect
+        stats.passiveItemEffects.Add("worm");
+    }
+    void twoFacedMask()
+    {
+        //range down
+        stats.range -= 7;
+        //bullet effect
+        stats.passiveItemEffects.Add("twinMask");
+    }
+    void boneFracture()
+    {
+        //bullet size up
+        stats.bulletSize += 5;
+        //bullet effect
+        stats.passiveItemEffects.Add("fracture");
+    }
+
 }

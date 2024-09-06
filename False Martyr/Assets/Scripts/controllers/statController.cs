@@ -25,7 +25,7 @@ public class statController : MonoBehaviour
     [HideInInspector] public float final_damage;
     [HideInInspector] public float greed_extra_item_chance;
     [HideInInspector] public float greed_extra_coin_chance;
-    [HideInInspector] public List<string> passiveItemEffects = new();
+    public List<string> passiveItemEffects = new();
 
     [Header("testing framework")]
     public bool testingForm;

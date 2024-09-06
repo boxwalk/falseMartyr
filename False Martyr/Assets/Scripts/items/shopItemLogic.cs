@@ -34,6 +34,7 @@ public class shopItemLogic : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = shopController.shop_library[item_type].sprite;
         BoxCollider2D coll = GetComponent<BoxCollider2D>();
         coll.size = new Vector2((2f / transform.localScale.x) * coll.size.x, (2f / transform.localScale.x) * coll.size.y);
+        coll.offset = new Vector2(coll.offset.x - shopController.shop_library[item_type].x_offset, coll.offset.y - shopController.shop_library[item_type].y_offset + 70.6f);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

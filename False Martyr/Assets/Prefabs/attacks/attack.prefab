@@ -114,6 +114,17 @@ MonoBehaviour:
   explosion_particle: {fileID: 5199251735420826164, guid: d95c8b30def236c4db8289ccf92e3757, type: 3}
   damage_particle: {fileID: 1363070023380237414, guid: c7fd30172e70d0b42875035bd3babd16, type: 3}
   gaintsBloodSprite: {fileID: 21300000, guid: 259afa519cee7144c98228d4bb433f06, type: 3}
+  fractureSprite: {fileID: -1903217744, guid: 6c3b4a0b8d1f3494681913bd2b76ea10, type: 3}
+  miniFractureSprite: {fileID: -92236180, guid: 6c3b4a0b8d1f3494681913bd2b76ea10, type: 3}
+  wormWaveMagnitude: 2
+  wormWaveSpeed: 6
+  isTwinMaskSynegy: 0
+  isBoneFractureOffshoot: 0
+  ovverideDir: 31415.928
+  boneFractureSpread: 15
+  fractureSpriteOffset: {x: -6.4, y: -3.4, z: 0}
+  giantsBloodBoneSynergy: {r: 0.9921569, g: 0.16470589, b: 0.16470589, a: 0}
+  fracture_particle: {fileID: 5199251735420826164, guid: ec0aaa034f39fbe4fb8d2143e461133a, type: 3}
 --- !u!95 &6557908710397158107
 Animator:
   serializedVersion: 5
@@ -145,6 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4461669940189014190}
   - component: {fileID: 5768807761011962007}
+  - component: {fileID: 7149541387823181576}
   m_Layer: 0
   m_Name: sprite
   m_TagString: Untagged
@@ -219,3 +231,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7149541387823181576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8118989631374791547}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe25804540facd4da68a27ac12ba088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spin_speed: 720
+  z_rotation: 1
+  x_rotation: 0
+  y_rotation: 0

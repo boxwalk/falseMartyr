@@ -2070,12 +2070,30 @@ MonoBehaviour:
     size: 1.5
     price: 8
     item_index: 15
-  - sprite: {fileID: 21300000, guid: bfad849927f37814fa3b0b78167ae993, type: 3}
+  - sprite: {fileID: 21300000, guid: abfb2d311fe577b469b6eddb8e30c488, type: 3}
     y_offset: 71
     x_offset: 0
     size: 1.5
     price: 7
     item_index: 19
+  - sprite: {fileID: 21300000, guid: 790aa97789bc74f4d821d80c3c8ea32e, type: 3}
+    y_offset: 60
+    x_offset: 11
+    size: 1.8
+    price: 8
+    item_index: 20
+  - sprite: {fileID: 21300000, guid: adbc5c7d7f062174bb674411a8739e15, type: 3}
+    y_offset: 65.1
+    x_offset: -26.3
+    size: 1.8
+    price: 11
+    item_index: 21
+  - sprite: {fileID: 21300000, guid: b9dde5bd4f7c3904097f6407cf178042, type: 3}
+    y_offset: 69.5
+    x_offset: -6.9
+    size: 1.2
+    price: 10
+    item_index: 22
   shop_number: 0
   shop_items: 
 --- !u!1 &519420028
@@ -8313,6 +8331,51 @@ MonoBehaviour:
     mod_parent: body
     flavour_texts:
     - fervour up, arcana up, greed down
+  - item_name: wiggly worm
+    item_sprite: {fileID: 21300000, guid: 790aa97789bc74f4d821d80c3c8ea32e, type: 3}
+    item_key: worm
+    is_unlimited_supply: 0
+    supply: 1
+    item_scale: 0.0216
+    item_x_offset: 0.225
+    item_y_offset: 0.542
+    is_in_shop: 1
+    shop_index: 12
+    has_mod: 0
+    modification_prefab: {fileID: 8843199581175043642, guid: e4bd4e3d8abb7d84cbb1e641ff9394f5, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - wiggly bullets!
+  - item_name: two faced mask
+    item_sprite: {fileID: 21300000, guid: adbc5c7d7f062174bb674411a8739e15, type: 3}
+    item_key: twinMask
+    is_unlimited_supply: 0
+    supply: 1
+    item_scale: 0.02016
+    item_x_offset: -0.273
+    item_y_offset: 0.582
+    is_in_shop: 1
+    shop_index: 13
+    has_mod: 0
+    modification_prefab: {fileID: 8843199581175043642, guid: e4bd4e3d8abb7d84cbb1e641ff9394f5, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - twin bullets
+  - item_name: bone fracture
+    item_sprite: {fileID: 21300000, guid: b9dde5bd4f7c3904097f6407cf178042, type: 3}
+    item_key: fracture
+    is_unlimited_supply: 0
+    supply: 1
+    item_scale: 0.01152
+    item_x_offset: 0
+    item_y_offset: 0.6
+    is_in_shop: 1
+    shop_index: 14
+    has_mod: 0
+    modification_prefab: {fileID: 8843199581175043642, guid: e4bd4e3d8abb7d84cbb1e641ff9394f5, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - fractured, broken, dislocated, shattered and disintegrated.
   item_prefab: {fileID: 8755638550371420194, guid: a20909be90dd4d7469b2620cb11639ed, type: 3}
   extra_prefabs:
   - {fileID: 4244896217670732808, guid: 3eb0fa6eb837cc14ca95c8d9ef361cd4, type: 3}
