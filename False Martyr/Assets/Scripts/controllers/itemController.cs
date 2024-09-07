@@ -231,6 +231,12 @@ public class itemController : MonoBehaviour
             case 22:
                 boneFracture();
                 break;
+            case 23:
+                sigilCraftersBracers();
+                break;
+            case 24:
+                deathbringersScythe();
+                break;
 
             default: //mathcing item not found
                 Debug.Log("error: no item found");
@@ -462,6 +468,24 @@ public class itemController : MonoBehaviour
         stats.bulletSize += 5;
         //bullet effect
         stats.passiveItemEffects.Add("fracture");
+    }
+    void sigilCraftersBracers()
+    {
+        //bullet effect
+        stats.passiveItemEffects.Add("bracers");
+    }
+    void deathbringersScythe()
+    {
+        //bullet size up
+        stats.bulletSize += 5;
+        //bullet speed up
+        stats.bulletSpeed += 3;
+        //fire rate down
+        stats.fireRate -= 2;
+        //damage up
+        stats.damage += 5;
+        //bullet effect
+        stats.passiveItemEffects.Add("scythe");
     }
 
 }

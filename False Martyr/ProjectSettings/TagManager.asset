@@ -25,6 +25,7 @@ TagManager:
   - loading
   - StatController
   - ConfigController
+  - bracerSigil
   layers:
   - Default
   - TransparentFX

@@ -29,12 +29,14 @@ public class player_attacks : MonoBehaviour
     private ReferenceController reference;
     private gameController gameController;
     private statController statController;
+    private player_coins playerCoins;
 
 
     void Start()
     {
         //get references
         playerHealth = GetComponent<player_health>();
+        playerCoins = GetComponent<player_coins>();
         reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
         gameController = reference.GameController;
         statController = reference.StatController;
@@ -64,27 +66,40 @@ public class player_attacks : MonoBehaviour
         if (attack_charged && (is_left_arrow_pressed || is_right_arrow_pressed || is_down_arrow_pressed || is_up_arrow_pressed))
         {
             int attack_dir = 0;
+            GameObject attack_prefab;
             if (is_right_arrow_pressed)
             {
-                GameObject attack_prefab = Instantiate(player_attack, shoot_point.position, Quaternion.identity); //Instantiate bullet
+                if(statController.passiveItemEffects.Contains("scythe")) //scythe logic
+                    attack_prefab = Instantiate(player_attack, playerCoins.coin_points[2].position, Quaternion.identity); //Instantiate bullet
+                else
+                    attack_prefab = Instantiate(player_attack, shoot_point.position, Quaternion.identity); //Instantiate bullet
                 attack_prefab.GetComponent<attack_logic>().attack_dir = 1;  //right attack
                 attack_dir = 1;
             }
             else if (is_left_arrow_pressed)
             {
-                GameObject attack_prefab = Instantiate(player_attack, shoot_point.position, Quaternion.identity); //Instantiate bullet
+                if (statController.passiveItemEffects.Contains("scythe")) //scythe logic
+                    attack_prefab = Instantiate(player_attack, playerCoins.coin_points[3].position, Quaternion.identity); //Instantiate bullet
+                else
+                    attack_prefab = Instantiate(player_attack, shoot_point.position, Quaternion.identity); //Instantiate bullet
                 attack_prefab.GetComponent<attack_logic>().attack_dir = 2;  //left attack
                 attack_dir = 2;
             }
             else if (is_up_arrow_pressed)
             {
-                GameObject attack_prefab = Instantiate(player_attack, top_shoot_point.position, Quaternion.identity); //Instantiate bullet
+                if (statController.passiveItemEffects.Contains("scythe")) //scythe logic
+                    attack_prefab = Instantiate(player_attack, playerCoins.coin_points[0].position, Quaternion.identity); //Instantiate bullet
+                else
+                    attack_prefab = Instantiate(player_attack, top_shoot_point.position, Quaternion.identity); //Instantiate bullet
                 attack_prefab.GetComponent<attack_logic>().attack_dir = 3;  //up attack
                 attack_dir = 3;
             }
             else if (is_down_arrow_pressed)
             {
-                GameObject attack_prefab = Instantiate(player_attack, bottom_shoot_point.position, Quaternion.identity);
+                if (statController.passiveItemEffects.Contains("scythe")) //scythe logic
+                    attack_prefab = Instantiate(player_attack, playerCoins.coin_points[1].position, Quaternion.identity); //Instantiate bullet
+                else
+                    attack_prefab = Instantiate(player_attack, bottom_shoot_point.position, Quaternion.identity); //Instantiate bullet
                 attack_prefab.GetComponent<attack_logic>().attack_dir = 4;  //down attack
                 attack_dir = 4;
             }

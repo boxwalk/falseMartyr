@@ -17,7 +17,7 @@ public class player_coins : MonoBehaviour
     [SerializeField] private Image healthBar;
 
     //transforms
-    [SerializeField] private List<Transform> coin_points;
+    public List<Transform> coin_points;
 
     //prefabs
     [SerializeField] private GameObject coinPrefab;

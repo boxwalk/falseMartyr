@@ -16,6 +16,7 @@ public class attack_logic : MonoBehaviour
     //components
     private Rigidbody2D rb;
     private Animator anim;
+    private CircleCollider2D _collider;
 
     //reference
     private ReferenceController reference;
@@ -27,6 +28,7 @@ public class attack_logic : MonoBehaviour
     [SerializeField] private Sprite gaintsBloodSprite;
     [SerializeField] private Sprite fractureSprite;
     [SerializeField] private Sprite miniFractureSprite;
+    [SerializeField] private Sprite scytheSprite;
 
     //main values
     private float baseSize;
@@ -47,12 +49,17 @@ public class attack_logic : MonoBehaviour
     [SerializeField] private Color giantsBloodBoneSynergy;
     [SerializeField] private GameObject fracture_particle;
     private bool RangeDestroy = false;
+    private bool CameraDestroy = false;
+    [SerializeField] private GameObject bracerSigil;
+    [SerializeField] private Vector3 scytheSpriteOffset;
+    private bool logic_enabled = true;
 
     void Start()
     {
         //get references to components
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        _collider = GetComponent<CircleCollider2D>();
 
         //get references
         reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
@@ -86,6 +93,17 @@ public class attack_logic : MonoBehaviour
             rend.sprite = miniFractureSprite; //mini fracture
             rend.gameObject.transform.localPosition += fractureSpriteOffset;
             rend.gameObject.GetComponent<SpinningAnimation>().enabled = true;
+        }
+        else if (stats.passiveItemEffects.Contains("scythe"))
+        {
+            rend.sprite = scytheSprite; //scythe
+            rend.gameObject.GetComponent<SpinningAnimation>().enabled = true;
+            rend.gameObject.transform.localScale = new Vector2(0.8f, 0.8f); //resize
+            rend.gameObject.transform.localPosition += scytheSpriteOffset;
+            logic_enabled = false;
+            StartCoroutine(scytheCooldown());
+            initializedTime += 3;
+            anim.SetLayerWeight(1, 1);
         }
         else if (stats.passiveItemEffects.Contains("fracture"))
         {
@@ -121,22 +139,33 @@ public class attack_logic : MonoBehaviour
 
     void Update()
     {
-        //set velocity of bullet
-        rb.velocity = transform.right * bullet_speed;
+        if (logic_enabled)
+        {
+            //enable hitbox
+            _collider.enabled = true;
 
-        rangeLogic();
+            //set velocity of bullet
+            rb.velocity = transform.right * bullet_speed;
 
-        //specific item logic
-        if (stats.passiveItemEffects.Contains("worm") && !isBoneFractureOffshoot)
-            wigglyWormLogic();
+            rangeLogic();
+
+            //specific item logic
+            if (stats.passiveItemEffects.Contains("worm") && !isBoneFractureOffshoot)
+                wigglyWormLogic();
+        }
+        else
+        {
+            _collider.enabled = false;
+        }
     }
 
     void destroy_bullet()
     {
         //specific item logic
-        if (stats.passiveItemEffects.Contains("fracture") && !isBoneFractureOffshoot && !RangeDestroy)
+        if (stats.passiveItemEffects.Contains("fracture") && !isBoneFractureOffshoot && !RangeDestroy && !CameraDestroy)
             boneFractureLogic();
-
+        if (stats.passiveItemEffects.Contains("bracers") && !isBoneFractureOffshoot && !CameraDestroy)
+            sigilBracersLogic();
         Destroy(gameObject);
     }
 
@@ -155,9 +184,9 @@ public class attack_logic : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "MainCamera")
+        if (collision.gameObject.tag == "MainCamera" && logic_enabled)
         {
-            RangeDestroy = true;
+            CameraDestroy = true;
             destroy_bullet(); //left camera
         }
     }
@@ -227,5 +256,29 @@ public class attack_logic : MonoBehaviour
         boneLogic = instantiatedBone.GetComponent<attack_logic>();
         boneLogic.isBoneFractureOffshoot = true;
         boneLogic.ovverideDir = secondBoneDir;
+    }
+    void sigilBracersLogic()
+    {
+        bool is_touching_other_sigil = false;
+        Collider2D[] results = Physics2D.OverlapCircleAll(transform.position, 0.7f * (stats.bulletSize / 10));
+        foreach (Collider2D col in results)
+        {
+            if (col.gameObject.tag == "bracerSigil")
+            {
+                is_touching_other_sigil = true;
+                break;
+            }
+        }
+        if(!is_touching_other_sigil)
+            Instantiate(bracerSigil, transform.position, Quaternion.identity);
+    }
+
+    private IEnumerator scytheCooldown()
+    {
+        yield return new WaitForSeconds(2.34f);
+        if (stats.passiveItemEffects.Contains("giantsBlood"))
+            rend.color = giantsBloodBoneSynergy;
+        yield return new WaitForSeconds(0.66f);
+        logic_enabled = true;
     }
 }
