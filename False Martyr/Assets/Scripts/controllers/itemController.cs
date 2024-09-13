@@ -237,6 +237,9 @@ public class itemController : MonoBehaviour
             case 24:
                 deathbringersScythe();
                 break;
+            case 25:
+                azureAmethyst();
+                break;
 
             default: //mathcing item not found
                 Debug.Log("error: no item found");
@@ -486,6 +489,11 @@ public class itemController : MonoBehaviour
         stats.damage += 5;
         //bullet effect
         stats.passiveItemEffects.Add("scythe");
+    }
+    void azureAmethyst()
+    {
+        //bullet effect
+        stats.passiveItemEffects.Add("amethyst");
     }
 
 }

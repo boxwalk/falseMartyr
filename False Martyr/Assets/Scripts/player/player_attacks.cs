@@ -18,6 +18,8 @@ public class player_attacks : MonoBehaviour
 
     //attack variables
     private bool attack_charged = true;
+    private float amethyst_target = 0;
+    [SerializeField] private GameObject amethystShard;
 
     //transforms
     [SerializeField] private Transform shoot_point;
@@ -49,6 +51,8 @@ public class player_attacks : MonoBehaviour
             get_stats();
             gather_input();
             fire_attacks();
+            if (statController.passiveItemEffects.Contains("amethyst"))
+                amethyst_logic();
         }
     }
 
@@ -132,5 +136,40 @@ public class player_attacks : MonoBehaviour
         bulletScript.attack_dir = dir;
         if (statController.passiveItemEffects.Contains("worm")) //wiggly worm synergy
             bulletScript.isTwinMaskSynegy = true;
+    }
+
+    void amethyst_logic()
+    {
+        if (amethyst_target == 0)
+            amethyst_target = Time.time + Random.Range(0.4f, 0.5f);
+        if (is_left_arrow_pressed || is_right_arrow_pressed || is_down_arrow_pressed || is_up_arrow_pressed)
+        {
+            if(Time.time > amethyst_target)
+            {
+                //shoot shards
+                GameObject attack_prefab;
+                float base_dir = 0;
+                if (is_right_arrow_pressed)
+                    base_dir = 0;
+                else if (is_left_arrow_pressed)
+                    base_dir = 180;
+                else if (is_up_arrow_pressed)
+                    base_dir = 90;
+                else if (is_down_arrow_pressed)
+                    base_dir =270;
+
+                attack_prefab = Instantiate(amethystShard, shoot_point.position, Quaternion.identity); //Instantiate bullet
+                attack_prefab.GetComponent<amethystShardLogic>().dir = base_dir + Random.Range(-20f,20f);
+                attack_prefab = Instantiate(amethystShard, shoot_point.position, Quaternion.identity); //Instantiate bullet
+                attack_prefab.GetComponent<amethystShardLogic>().dir = base_dir + 30 + +Random.Range(-20f, 20f);
+                attack_prefab = Instantiate(amethystShard, shoot_point.position, Quaternion.identity); //Instantiate bullet
+                attack_prefab.GetComponent<amethystShardLogic>().dir = base_dir - 30 + +Random.Range(-20f, 20f);
+                amethyst_target = Time.time + Random.Range(0.4f, 0.5f);
+            }
+        }
+        else
+        {
+            amethyst_target = Time.time + Random.Range(0.4f, 0.5f);
+        }
     }
 }

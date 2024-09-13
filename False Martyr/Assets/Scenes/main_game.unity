@@ -2094,6 +2094,12 @@ MonoBehaviour:
     size: 1.2
     price: 10
     item_index: 22
+  - sprite: {fileID: 21300000, guid: e205c6a7dbd33ec4182a10ae3e3b9d48, type: 3}
+    y_offset: 78.5
+    x_offset: -6.4
+    size: 1.5
+    price: 11
+    item_index: 25
   shop_number: 0
   shop_items: 
 --- !u!1 &519420028
@@ -7609,6 +7615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_attack: {fileID: 1956336298220190314, guid: 8a7a2f59de0fe1248baeea198ae65415, type: 3}
+  amethystShard: {fileID: 1260636471678465790, guid: 21ca4c64b68da4046a1e8560e1cb9e82, type: 3}
   shoot_point: {fileID: 1095069119}
   top_shoot_point: {fileID: 1212684749}
   bottom_shoot_point: {fileID: 1091101435}
@@ -8406,11 +8413,26 @@ MonoBehaviour:
     mod_parent: body
     flavour_texts:
     - there's souls that need reaping...
+  - item_name: azure amethyst
+    item_sprite: {fileID: 21300000, guid: e205c6a7dbd33ec4182a10ae3e3b9d48, type: 3}
+    item_key: amethyst
+    is_unlimited_supply: 0
+    supply: 1
+    item_scale: 0.0144
+    item_x_offset: -0.038
+    item_y_offset: 0.702
+    is_in_shop: 1
+    shop_index: 15
+    has_mod: 0
+    modification_prefab: {fileID: 8843199581175043642, guid: e4bd4e3d8abb7d84cbb1e641ff9394f5, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - sourced from 100% ethical fairtrade verified magic gem mines
   item_prefab: {fileID: 8755638550371420194, guid: a20909be90dd4d7469b2620cb11639ed, type: 3}
   extra_prefabs:
   - {fileID: 4244896217670732808, guid: 3eb0fa6eb837cc14ca95c8d9ef361cd4, type: 3}
   - {fileID: 5767590126911441932, guid: 0a8e4c86fa99f024789cc09828e9d280, type: 3}
-  lucky_item: 24
+  lucky_item: 25
 --- !u!1 &2122814842
 GameObject:
   m_ObjectHideFlags: 0
