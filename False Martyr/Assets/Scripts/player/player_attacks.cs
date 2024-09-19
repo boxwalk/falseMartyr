@@ -181,7 +181,14 @@ public class player_attacks : MonoBehaviour
     }
     public IEnumerator electricCore_logic()
     {
-        yield return new WaitForSeconds(Random.Range(min_core_time, max_core_time));
+        float extra_cooldown_amount = (statController.arcana - 5) * 0.2f;
+        float temp_min_core_time = min_core_time - extra_cooldown_amount;
+        float temp_max_core_time = max_core_time - extra_cooldown_amount;
+        if (temp_min_core_time < 1)
+            temp_min_core_time = 1;
+        if (temp_max_core_time < 2)
+            temp_max_core_time = 2;
+        yield return new WaitForSeconds(Random.Range(temp_min_core_time,temp_max_core_time));
         Instantiate(electricCore, transform.position, Quaternion.identity,transform);
         StartCoroutine(electricCore_logic());
     }

@@ -11,6 +11,7 @@ public class electricField : MonoBehaviour
     [SerializeField] private float max_flucuate_size;
     [SerializeField] private float min_flucuate_size;
     private float flucuate_size;
+    private float extra_size_percentage;
 
     //references
     private ReferenceController reference;
@@ -24,7 +25,13 @@ public class electricField : MonoBehaviour
 
         //setup values
         damage = stats.arcana *2;
+        extra_size_percentage = (stats.arcana - 5) * 0.075f;
+        if (extra_size_percentage < 0)
+            extra_size_percentage = 0;
+        if (extra_size_percentage > 2.25f)
+            extra_size_percentage = 2.25f;
         flucuate_size = Random.Range(min_flucuate_size, max_flucuate_size); //set size
+        flucuate_size += extra_size_percentage;
         transform.localScale = new Vector2(transform.localScale.x*flucuate_size,transform.localScale.y*flucuate_size);
         StartCoroutine(mainLogic());
 
