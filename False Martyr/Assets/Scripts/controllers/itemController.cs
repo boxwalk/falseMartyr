@@ -240,6 +240,9 @@ public class itemController : MonoBehaviour
             case 25:
                 azureAmethyst();
                 break;
+            case 26:
+                fluctuatingCore();
+                break;
 
             default: //mathcing item not found
                 Debug.Log("error: no item found");
@@ -494,6 +497,12 @@ public class itemController : MonoBehaviour
     {
         //bullet effect
         stats.passiveItemEffects.Add("amethyst");
+    }
+    void fluctuatingCore()
+    {
+        //passive effect
+        stats.passiveItemEffects.Add("electricCore");
+        StartCoroutine(player.GetComponent<player_attacks>().electricCore_logic()); //start coroutine
     }
 
 }

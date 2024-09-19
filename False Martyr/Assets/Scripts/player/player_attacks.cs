@@ -20,6 +20,9 @@ public class player_attacks : MonoBehaviour
     private bool attack_charged = true;
     private float amethyst_target = 0;
     [SerializeField] private GameObject amethystShard;
+    [SerializeField] private GameObject electricCore;
+    [SerializeField] private float min_core_time;
+    [SerializeField] private float max_core_time;
 
     //transforms
     [SerializeField] private Transform shoot_point;
@@ -42,6 +45,10 @@ public class player_attacks : MonoBehaviour
         reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
         gameController = reference.GameController;
         statController = reference.StatController;
+
+        //start coroutines
+        if (statController.passiveItemEffects.Contains("electricCore"))
+            StartCoroutine(electricCore_logic());
     }
 
     void Update()
@@ -171,5 +178,11 @@ public class player_attacks : MonoBehaviour
         {
             amethyst_target = Time.time + Random.Range(0.4f, 0.5f);
         }
+    }
+    public IEnumerator electricCore_logic()
+    {
+        yield return new WaitForSeconds(Random.Range(min_core_time, max_core_time));
+        Instantiate(electricCore, transform.position, Quaternion.identity,transform);
+        StartCoroutine(electricCore_logic());
     }
 }
