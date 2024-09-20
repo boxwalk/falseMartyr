@@ -8446,11 +8446,27 @@ MonoBehaviour:
     mod_parent: body
     flavour_texts:
     - It has so much potential, it's shocking. Puns are too AC.
+  - item_name: ghostly essence
+    item_sprite: {fileID: 21300000, guid: 04025052019c34b49b2a3ed0ff03128d, type: 3}
+    item_key: ghostEssence
+    is_unlimited_supply: 0
+    supply: 1
+    item_scale: 0.01296
+    item_x_offset: 0.064
+    item_y_offset: 0.742
+    is_in_shop: 0
+    shop_index: 0
+    has_mod: 0
+    modification_prefab: {fileID: 8843199581175043642, guid: e4bd4e3d8abb7d84cbb1e641ff9394f5, type: 3}
+    mod_parent: body
+    flavour_texts:
+    - hopefully will not take over your body while you sleep, but no promises.
   item_prefab: {fileID: 8755638550371420194, guid: a20909be90dd4d7469b2620cb11639ed, type: 3}
   extra_prefabs:
   - {fileID: 4244896217670732808, guid: 3eb0fa6eb837cc14ca95c8d9ef361cd4, type: 3}
   - {fileID: 5767590126911441932, guid: 0a8e4c86fa99f024789cc09828e9d280, type: 3}
-  lucky_item: 26
+  - {fileID: 7388568690851309354, guid: 1018bc09894a828448aced56810a567e, type: 3}
+  lucky_item: 27
 --- !u!1 &2122814842
 GameObject:
   m_ObjectHideFlags: 0

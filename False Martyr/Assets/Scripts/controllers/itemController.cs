@@ -243,6 +243,15 @@ public class itemController : MonoBehaviour
             case 26:
                 fluctuatingCore();
                 break;
+            case 27:
+                ghostlyEssence();
+                break;
+            case 28:
+                sanctifyingWard();
+                break;
+            case 29:
+                divergence();
+                break;
 
             default: //mathcing item not found
                 Debug.Log("error: no item found");
@@ -503,6 +512,22 @@ public class itemController : MonoBehaviour
         //passive effect
         stats.passiveItemEffects.Add("electricCore");
         StartCoroutine(player.GetComponent<player_attacks>().electricCore_logic()); //start coroutine
+    }
+    void ghostlyEssence()
+    {
+        //passive effect
+        stats.passiveItemEffects.Add("ghostEssence");
+        Instantiate(extra_prefabs[2], player.transform.position, Quaternion.identity); //instantiate ghost
+    }
+    void sanctifyingWard()
+    {
+        //passive effect
+        stats.passiveItemEffects.Add("ward");
+    }
+    void divergence()
+    {
+        //bullet effect
+        stats.passiveItemEffects.Add("divergence");
     }
 
 }
