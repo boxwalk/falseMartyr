@@ -60,6 +60,7 @@ public class attack_logic : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         _collider = GetComponent<CircleCollider2D>();
+        _collider.enabled = false;
 
         //get references
         reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();

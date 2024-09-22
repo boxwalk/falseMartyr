@@ -19,9 +19,12 @@ public class bracerSigil : MonoBehaviour
         stats = reference.StatController;
 
         //setup values
-        damage = stats.damage / 5;
+        damage = stats.damage / 2;
+
+        /* old scale logic
         float scale = transform.localScale.x * (stats.bulletSize / 10);
         transform.localScale = new Vector2(scale, scale);
+        */
 
         //start logic
         StartCoroutine(sigilLogic());
@@ -32,7 +35,8 @@ public class bracerSigil : MonoBehaviour
         for(int i = 0; i < 5; i++)
         {
             yield return new WaitForSeconds(2);
-            Collider2D[] results = Physics2D.OverlapCircleAll(transform.position, 0.7f * (stats.bulletSize / 10));
+            Collider2D[] results = Physics2D.OverlapCircleAll(transform.position, 0.7f);
+            //Collider2D[] results = Physics2D.OverlapCircleAll(transform.position, 0.7f * (stats.bulletSize / 10)); //old logic
             foreach (Collider2D col in results)
             {
                 if (col.gameObject.layer == 7) //enemy

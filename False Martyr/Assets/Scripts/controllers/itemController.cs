@@ -498,7 +498,7 @@ public class itemController : MonoBehaviour
         //fire rate down
         stats.fireRate -= 2;
         //damage up
-        stats.damage += 5;
+        stats.damage += 10;
         //bullet effect
         stats.passiveItemEffects.Add("scythe");
     }

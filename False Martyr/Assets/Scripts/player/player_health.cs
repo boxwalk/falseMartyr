@@ -13,6 +13,7 @@ public class player_health : MonoBehaviour
     //private variables
     public bool is_in_iframes = false;
     public bool is_dead = false;
+    private List<Transform> currentWards = new();
 
     //references
     private ReferenceController reference;
@@ -24,6 +25,7 @@ public class player_health : MonoBehaviour
     [SerializeField] private GameObject death_particles;
     [SerializeField] private GameObject death2_particles;
     [SerializeField] private GameObject spirit_particles;
+    [SerializeField] private GameObject ward_particles;
 
     //components
     private Animator anim;
@@ -57,30 +59,38 @@ public class player_health : MonoBehaviour
 
     public IEnumerator take_damage()
     {
-        anim.SetTrigger("damage"); //start animation
-        StartCoroutine(cam.camera_shake(shake_duration, shake_magnitude)); //camera shake
-
-        if (stats.spiritHealth > 0) //take damage
+        if (stats.passiveItemEffects.Contains("ward") && currentWards.Count != 0)
         {
-            Instantiate(spirit_particles, transform.position, Quaternion.identity);
-            stats.spiritHealth--; //decrement spirit health
+            StartCoroutine(ward_damage_logic());
         }
         else
-            stats.health--; //decrement health
-
-        is_in_iframes = true; //start i frames
-        if(stats.martyrism > 3)
         {
-            Ui_animator.SetBool("martyrismSymbol", true); //martyrism symbol
-            stats.temp_damage += stats.martyrism_damage_boost; //martyrism damage bonus
-        }
-        if (stats.health + stats.spiritHealth <= 0) //check for death
-            StartCoroutine(death());
-        else{
-            Instantiate(damage_particles, transform.position, Quaternion.identity); //damage particles
-            yield return new WaitForSeconds(stats.i_frame_time);
-            is_in_iframes = false; //end i frames
-            Ui_animator.SetBool("martyrismSymbol", false); //martyrism symbol
+            anim.SetTrigger("damage"); //start animation
+            StartCoroutine(cam.camera_shake(shake_duration, shake_magnitude)); //camera shake
+
+            if (stats.spiritHealth > 0) //take damage
+            {
+                Instantiate(spirit_particles, transform.position, Quaternion.identity);
+                stats.spiritHealth--; //decrement spirit health
+            }
+            else
+                stats.health--; //decrement health
+
+            is_in_iframes = true; //start i frames
+            if (stats.martyrism > 3)
+            {
+                Ui_animator.SetBool("martyrismSymbol", true); //martyrism symbol
+                stats.temp_damage += stats.martyrism_damage_boost; //martyrism damage bonus
+            }
+            if (stats.health + stats.spiritHealth <= 0) //check for death
+                StartCoroutine(death());
+            else
+            {
+                Instantiate(damage_particles, transform.position, Quaternion.identity); //damage particles
+                yield return new WaitForSeconds(stats.i_frame_time);
+                is_in_iframes = false; //end i frames
+                Ui_animator.SetBool("martyrismSymbol", false); //martyrism symbol
+            }
         }
         yield return new WaitForSeconds(0.1f);
     }
@@ -110,6 +120,14 @@ public class player_health : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Exit"))
             gameplay.nextFloor();
+        else if (collision.gameObject.CompareTag("defensiveWard"))
+            currentWards.Add(collision.gameObject.transform);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("defensiveWard"))
+            currentWards.Remove(collision.gameObject.transform);
     }
 
     public void max_health_up() //increment max health
@@ -127,5 +145,36 @@ public class player_health : MonoBehaviour
     {
         stats.spiritHealth += amount;
         Instantiate(spirit_particles, transform.position, Quaternion.identity);
+    }
+
+    private IEnumerator ward_damage_logic()
+    {
+        //delete ward
+        float lowest_distance = float.MaxValue;
+        Transform lowerst_distance_transform = null;
+        foreach (Transform ward_transform in currentWards) //loop through current wards
+        {
+            float distance = Vector2.Distance(transform.position, ward_transform.position); //find distance
+            if (distance < lowest_distance) //check if closest
+            {
+                lowerst_distance_transform = ward_transform;
+                lowest_distance = distance;
+            }
+        }
+        Destroy(lowerst_distance_transform.gameObject); //destroy gameObject
+
+        //i frame logic
+        is_in_iframes = true; //start i frames
+        if (stats.martyrism > 3)
+        {
+            Ui_animator.SetBool("martyrismSymbol", true); //martyrism symbol
+            stats.temp_damage += stats.martyrism_damage_boost; //martyrism damage bonus
+        }
+        Instantiate(ward_particles, transform.position, Quaternion.identity); //damage particles
+        Instantiate(ward_particles, transform.position, Quaternion.identity); //damage particles
+        Instantiate(death_particles, transform.position, Quaternion.identity); //damage particles
+        yield return new WaitForSeconds(stats.i_frame_time);
+        is_in_iframes = false; //end i frames
+        Ui_animator.SetBool("martyrismSymbol", false); //martyrism symbol      
     }
 }

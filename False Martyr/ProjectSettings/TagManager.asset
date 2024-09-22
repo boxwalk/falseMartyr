@@ -26,6 +26,7 @@ TagManager:
   - StatController
   - ConfigController
   - bracerSigil
+  - defensiveWard
   layers:
   - Default
   - TransparentFX

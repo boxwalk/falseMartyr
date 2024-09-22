@@ -15,12 +15,14 @@ public class enemyHealth : MonoBehaviour
     [SerializeField] private GameObject bonusDeathPrefab;
     private bool is_dying = false;
     [SerializeField] private bool decrementEnemyCountOnDeath = true;
+    private GameObject wardField;
 
     //references
     private ReferenceController reference;
     private camera_controller cam;
     private room_controller room;
     private bossHealthBar healthBar;
+    private statController stats;
 
     //componeents
     private Animator anim;
@@ -35,6 +37,9 @@ public class enemyHealth : MonoBehaviour
         cam = reference.CameraController;
         room = reference.RoomController;
         healthBar = reference.bossHealthBar;
+        stats = reference.StatController;
+        wardField = Resources.Load("wardDrop", typeof(GameObject)) as GameObject;
+        Debug.Log(wardField);
 
         //get components
         anim = GetComponent<Animator>();
@@ -86,6 +91,12 @@ public class enemyHealth : MonoBehaviour
             if (TryGetComponent(out batCallerKnightEnemy script))
             {
                 script.death.Invoke();
+            }
+
+            //sanctifying ward logic
+            if (stats.passiveItemEffects.Contains("ward"))
+            {
+                Instantiate(wardField, transform.position, Quaternion.identity);
             }
 
             Destroy(gameObject);
