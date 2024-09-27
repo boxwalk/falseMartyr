@@ -94,6 +94,7 @@ public class gameplayController : MonoBehaviour
     private IEnumerator clear_room(GameObject new_room, room_logic room_script)
     {
         stats.temp_damage = 0; //reset temp damage
+        cam.cancel_camera_shake(); //cancels any camera shake
         new_room.GetComponent<Animator>().SetTrigger("open_doors");
         yield return new WaitForSeconds(0.33f);
 

@@ -35,4 +35,11 @@ public class camera_controller : MonoBehaviour
         transform.position = originalpos; //return to original position
         is_camera_shaking = false; //end camera shake
     }
+
+    public void cancel_camera_shake()
+    {
+        StopAllCoroutines();
+        transform.position = room_controller.GetPositionFromGridIndex(room_index);
+        is_camera_shaking = false;
+    }
 }

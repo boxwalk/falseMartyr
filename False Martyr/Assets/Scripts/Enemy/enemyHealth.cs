@@ -16,6 +16,7 @@ public class enemyHealth : MonoBehaviour
     private bool is_dying = false;
     [SerializeField] private bool decrementEnemyCountOnDeath = true;
     private GameObject wardField;
+    private GameObject divergenceParticles;
 
     //references
     private ReferenceController reference;
@@ -39,7 +40,7 @@ public class enemyHealth : MonoBehaviour
         healthBar = reference.bossHealthBar;
         stats = reference.StatController;
         wardField = Resources.Load("wardDrop", typeof(GameObject)) as GameObject;
-        Debug.Log(wardField);
+        divergenceParticles = Resources.Load("divergence blast", typeof(GameObject)) as GameObject;
 
         //get components
         anim = GetComponent<Animator>();
@@ -163,5 +164,14 @@ public class enemyHealth : MonoBehaviour
     public void drop_dead()
     {
         enemy_health = 0;
+    }
+
+    public IEnumerator divergenceDamage(float damage)
+    {
+        yield return new WaitForSeconds(3);
+        damage_flash();
+        enemy_health -= damage;
+        Instantiate(divergenceParticles, transform.position, Quaternion.identity); //particles
+        cam.StartCoroutine(cam.camera_shake(0.15f, 0.05f)); //camera shake
     }
 }

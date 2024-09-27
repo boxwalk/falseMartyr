@@ -176,11 +176,22 @@ public class attack_logic : MonoBehaviour
         if (collision.gameObject.layer == 6 && !(collision.gameObject.tag == "NoEnemyField")){  //hit walls
             Instantiate(explosion_particle, transform.position, Quaternion.identity); //instantiate particles
             destroy_bullet();}
-        else if (collision.gameObject.layer == 7){
-            collision.gameObject.GetComponent<enemyHealth>().enemy_health -= damage; //hit enemies
+        else if (collision.gameObject.layer == 7)
+        {
+            if (stats.passiveItemEffects.Contains("divergence")) //divergence special logic
+            {
+                enemyHealth enemyHealthScript = collision.gameObject.GetComponent<enemyHealth>();
+                enemyHealthScript.enemy_health -= (damage/10); //hit enemies for 10 percent damage
+                    enemyHealthScript.StartCoroutine(enemyHealthScript.divergenceDamage(damage * 1.5f)); //start coroutine for 150 percent damage
+            }
+            else
+            {
+                collision.gameObject.GetComponent<enemyHealth>().enemy_health -= damage; //hit enemies
+            }
             Instantiate(damage_particle, transform.position, Quaternion.identity);
             collision.gameObject.GetComponent<enemyHealth>().damage_flash(); // damage anim
-            destroy_bullet(); }
+            destroy_bullet(); 
+        }
     }
 
     public void OnTriggerExit2D(Collider2D collision)
