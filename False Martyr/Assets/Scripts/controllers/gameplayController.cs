@@ -167,11 +167,6 @@ public class gameplayController : MonoBehaviour
         Gizmos.DrawWireCube(Vector3.zero, boss_end_box);
     }
     */
-
-    public void nextFloor() //exit reached
-    {
-        SceneManager.LoadScene(3); //load end screen
-    }
 }
 
 

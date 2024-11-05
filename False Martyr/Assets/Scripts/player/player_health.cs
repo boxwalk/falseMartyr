@@ -18,7 +18,7 @@ public class player_health : MonoBehaviour
     //references
     private ReferenceController reference;
     private camera_controller cam;
-    private gameplayController gameplay;
+    private gameController gameController;
     private statController stats;
     private Animator Ui_animator;
     [SerializeField] private GameObject damage_particles;
@@ -35,8 +35,8 @@ public class player_health : MonoBehaviour
         //get references
         reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
         cam = reference.CameraController;
-        gameplay = reference.GameplayController;
         stats = reference.StatController;
+        gameController = reference.GameController;
         Ui_animator = reference.UIController.gameObject.GetComponent<Animator>();
         //get components
         anim = GetComponent<Animator>();
@@ -119,7 +119,7 @@ public class player_health : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Exit"))
-            gameplay.nextFloor();
+            gameController.nextFloor();
         else if (collision.gameObject.CompareTag("defensiveWard"))
             currentWards.Add(collision.gameObject.transform);
     }

@@ -6,6 +6,7 @@ public class room_controller : MonoBehaviour
 {
     //room prefab
     [SerializeField] private GameObject room_prefab;
+    [SerializeField] private GameObject floor2Room;
 
     //room dimensions 
     [SerializeField] private int room_width;
@@ -55,6 +56,7 @@ public class room_controller : MonoBehaviour
     private minimapController minimapController;
     private statController stats;
     private roomConfigController configController;
+    private gameController gameController;
 
     //prefabs
     public GameObject item_pedestal;
@@ -80,6 +82,13 @@ public class room_controller : MonoBehaviour
         minimapController = referenceController.MinimapController;
         stats = referenceController.StatController;
         configController = referenceController.RoomConfigController;
+        gameController = referenceController.GameController;
+
+        //pick floor
+        if(gameController.floor == 2) //floor 2
+        {
+            room_prefab = floor2Room;
+        }
 
         //begin generation
         Vector2Int initial_room_index = new Vector2Int(grid_size_x / 2, grid_size_y / 2);

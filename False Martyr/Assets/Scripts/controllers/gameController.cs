@@ -17,6 +17,7 @@ public class gameController : MonoBehaviour
     [HideInInspector] public Coroutine skipCoroutine;
 
     //main game
+    public float floor = 1;
     private ReferenceController reference;
     private room_controller room;
     private statController stats;
@@ -73,8 +74,11 @@ public class gameController : MonoBehaviour
 
     public IEnumerator startFinalLoad()
     {
-        menuAnimator.SetTrigger("finalLoad");
-        yield return new WaitForSeconds(2f);
+        if(floor == 1) //only on first load
+        {
+            menuAnimator.SetTrigger("finalLoad");
+            yield return new WaitForSeconds(2f);
+        }
         SceneManager.LoadScene("main_game");
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
@@ -114,5 +118,17 @@ public class gameController : MonoBehaviour
         fullGameStart = true;
         //logic on game start
         ui.anim.SetTrigger("dungeontitle"); //set title screen
+    }
+    public void nextFloor() //exit reached
+    {
+        if(floor == 2)
+        {
+            SceneManager.LoadScene(3); //load end screen
+        }
+        else
+        {
+            floor++; //next floor
+            StartCoroutine(startFinalLoad());
+        }
     }
 }

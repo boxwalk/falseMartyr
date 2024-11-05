@@ -3883,7 +3883,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1110882933
 Transform:
   m_ObjectHideFlags: 0
@@ -4231,6 +4231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room_prefab: {fileID: 862749108166056197, guid: fefb9548f5a854445bc56695028c3d62, type: 3}
+  floor2Room: {fileID: 7379669973674975571, guid: aec659e4d4df6b5488bdbd8ff29c2be2, type: 3}
   room_width: 20
   room_height: 12
   grid_size_x: 50
@@ -6779,6 +6780,7 @@ MonoBehaviour:
   menuAnimator: {fileID: 0}
   storyScreenAnimator: {fileID: 0}
   testingForm: 1
+  floor: 1
   fullGameStart: 0
 --- !u!1 &1836219517
 GameObject:
