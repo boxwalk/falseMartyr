@@ -42,7 +42,7 @@ public class shopItemLogic : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             //hit player
-            if(playerCoins.coins >= price)
+            if(stats.coins >= price)
             {
                 if((!(item_type == 0)) || (item_type == 0 && !(stats.health == stats.maxhealth))) //hearts cannot be picked up if on full health
                 {

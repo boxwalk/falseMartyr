@@ -24,6 +24,7 @@ public class enemyHealth : MonoBehaviour
     private room_controller room;
     private bossHealthBar healthBar;
     private statController stats;
+    private player_health playerHealth;
 
     //componeents
     private Animator anim;
@@ -41,6 +42,7 @@ public class enemyHealth : MonoBehaviour
         stats = reference.StatController;
         wardField = Resources.Load("wardDrop", typeof(GameObject)) as GameObject;
         divergenceParticles = Resources.Load("divergence blast", typeof(GameObject)) as GameObject;
+        playerHealth = reference.Player.GetComponent<player_health>();
 
         //get components
         anim = GetComponent<Animator>();
@@ -119,6 +121,8 @@ public class enemyHealth : MonoBehaviour
     private IEnumerator minorDeityDeath(minorDeity bossScript)
     {
         bossScript.death.Invoke(); //destroy excess bullets
+
+        playerHealth.double_damage = false; //no more double damage
 
         GameObject deathAnim =  Instantiate(bonusDeathPrefab, transform.GetChild(0).GetChild(0).position, Quaternion.identity); //create death animation
 

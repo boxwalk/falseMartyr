@@ -94,6 +94,16 @@ public class gameController : MonoBehaviour
         Destroy(loadingScreen); //begin game
         fullGameStart = true;
         //logic on game start
+        if(floor == 1)
+        {
+            ui.titles[0].SetActive(true);
+            ui.titles[1].SetActive(true);
+        }
+        else
+        {
+            ui.titles[2].SetActive(true);
+            ui.titles[3].SetActive(true);
+        }
         ui.anim.SetTrigger("dungeontitle"); //set title screen
     }
 
@@ -117,6 +127,16 @@ public class gameController : MonoBehaviour
         Destroy(loadingScreen); //begin game
         fullGameStart = true;
         //logic on game start
+        if (floor == 1)
+        {
+            ui.titles[0].SetActive(true);
+            ui.titles[1].SetActive(true);
+        }
+        else
+        {
+            ui.titles[2].SetActive(true);
+            ui.titles[3].SetActive(true);
+        }
         ui.anim.SetTrigger("dungeontitle"); //set title screen
     }
     public void nextFloor() //exit reached

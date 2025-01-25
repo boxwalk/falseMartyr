@@ -6,8 +6,6 @@ using TMPro;
 
 public class player_coins : MonoBehaviour
 {
-    //main values
-    public int coins = 0;
 
     //ui references
     [SerializeField] private GameObject coin_counter;
@@ -38,20 +36,20 @@ public class player_coins : MonoBehaviour
 
     void Update()
     {
-        text.text = coins.ToString(); //set coin counter display
+        text.text = stats.coins.ToString(); //set coin counter display
 
-        if (coins == 0 || healthBar.enabled) //does not show coin counter if on 0 coins 
+        if (stats.coins == 0 || healthBar.enabled) //does not show coin counter if on 0 coins 
             coin_counter.SetActive(false);
         else
             coin_counter.SetActive(true);
 
-        if(coins < 0) //check for limit break
-            coins = 0;
+        if(stats.coins < 0) //check for limit break
+            stats.coins = 0;
     }
 
     public void gain_coins(int amount, int greed_count) //get money
     {
-        coins += amount;
+        stats.coins += amount;
         int greed_chance = Random.Range(1, 101);
         if(greed_chance < stats.greed_extra_coin_chance && greed_count < 5)
         {

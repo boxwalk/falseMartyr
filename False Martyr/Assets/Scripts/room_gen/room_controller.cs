@@ -88,6 +88,11 @@ public class room_controller : MonoBehaviour
         if(gameController.floor == 2) //floor 2
         {
             room_prefab = floor2Room;
+            max_rooms += 2;
+            min_rooms += 2;
+            min_end_rooms++;
+            max_end_rooms++;
+            item_rooms++;
         }
 
         //begin generation
@@ -376,11 +381,12 @@ public class room_controller : MonoBehaviour
         foreach(GameObject room in enemy_rooms) //loop through each enemy room
         {
             //room configuurations
-            configController.getRoomConfig(room.transform);
+            if(gameController.floor == 1)
+                configController.getRoomConfig(room.transform);
             //spawn enemies
             room_logic room_script = room.GetComponent<room_logic>();
             Vector3 room_centre = GetPositionFromGridIndex(room_script.room_index);
-            enemyGenController.floor_one_room_gen(room_script,room_centre); //run method in enemyGen script
+            enemyGenController.floor_one_room_gen(room_script,room_centre, gameController.floor); //run method in enemyGen script
         }
 
         //spawn item pedestals and items

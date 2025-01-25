@@ -13,6 +13,7 @@ public class player_health : MonoBehaviour
     //private variables
     public bool is_in_iframes = false;
     public bool is_dead = false;
+    public bool double_damage = false;
     private List<Transform> currentWards = new();
 
     //references
@@ -29,6 +30,7 @@ public class player_health : MonoBehaviour
 
     //components
     private Animator anim;
+
 
     void Start()
     {
@@ -75,6 +77,17 @@ public class player_health : MonoBehaviour
             }
             else
                 stats.health--; //decrement health
+
+            if (double_damage && stats.health + stats.spiritHealth > 0)
+            {
+                if (stats.spiritHealth > 0) //take damage
+                {
+                    Instantiate(spirit_particles, transform.position, Quaternion.identity);
+                    stats.spiritHealth--; //decrement spirit health
+                }
+                else
+                    stats.health--; //decrement health
+            }
 
             is_in_iframes = true; //start i frames
             if (stats.martyrism > 3)

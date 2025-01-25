@@ -32,6 +32,7 @@ public class enemyGenController : MonoBehaviour
     //enemies
     [SerializeField] private List<enemy_data> enemy_library;
     [SerializeField] private List<enemy_presets> preset_library;
+    [SerializeField] private List<enemy_presets> floor2preset_library;
     [SerializeField] private List<int> bossPool;
 
     //layermasks
@@ -43,21 +44,39 @@ public class enemyGenController : MonoBehaviour
     private float left_x_offset = -7.3f;
     private float right_x_offset = 7.3f;
 
-    public void floor_one_room_gen(room_logic room_script, Vector3 room_centre)
+    public void floor_one_room_gen(room_logic room_script, Vector3 room_centre, float floor)
     {
         //generate enemies
         List<int> preset_picking = new(); //initialize list used for preset selection
 
+        int enemyPreset = 0;
+        enemy_presets preset = null;
+
         //pick preset
-        for(int i = 0; i < preset_library.Count; i++) //fill preset selection list
+        if (floor == 1)
         {
-            for(int j = 0; j < preset_library[i].weight; j++)
+            for (int i = 0; i < preset_library.Count; i++) //fill preset selection list
             {
-                preset_picking.Add(i);
+                for (int j = 0; j < preset_library[i].weight; j++)
+                {
+                    preset_picking.Add(i);
+                }
             }
+            enemyPreset = preset_picking[Random.Range(0, preset_picking.Count)]; //pick preset
+            preset = preset_library[enemyPreset]; //get preset
         }
-        int enemyPreset = preset_picking[Random.Range(0, preset_picking.Count)]; //pick preset
-        enemy_presets preset = preset_library[enemyPreset]; //get preset
+        else
+        {
+            for (int i = 0; i < floor2preset_library.Count; i++) //fill preset selection list
+            {
+                for (int j = 0; j < floor2preset_library[i].weight; j++)
+                {
+                    preset_picking.Add(i);
+                }
+            }
+            enemyPreset = preset_picking[Random.Range(0, preset_picking.Count)]; //pick preset
+            preset = floor2preset_library[enemyPreset]; //get preset
+        }
 
         int enemy_number = Random.Range(preset.spawnCountMin, preset.spawnCountMax + 1); //get the number of enemies
         int enemiesToSpawnCount = enemy_number;

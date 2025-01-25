@@ -35,14 +35,13 @@ public class deerSkullEnemy : enemyAbstract
     void Update()
     {
         update_logic(); //method from inherited class
-        enemy_behaviour();
         if (enemy_activated)
         {
             enemy_behaviour(); //run enemy behaviour if activated
         }
         else
         {
-            //anim.SetBool("is_Walking", false);
+            anim.SetBool("is_Walking", false);
         }
     }
 

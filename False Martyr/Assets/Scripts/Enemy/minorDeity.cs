@@ -44,6 +44,8 @@ public class minorDeity : enemyAbstract
     private GameObject player;
     private room_controller room;
     private UIController UIController;
+    private gameController gameController;
+    private player_health playerHealth;
 
     //events 
     [HideInInspector] public UnityEvent death;
@@ -66,6 +68,16 @@ public class minorDeity : enemyAbstract
         player = reference.Player;
         room = reference.RoomController;
         UIController = reference.UIController;
+        gameController = reference.GameController;
+        playerHealth = player.GetComponent<player_health>();
+
+        //add floor 2 bonuses
+        if(gameController.floor == 2)
+        {
+            enemyHealth.max_health *= 5;
+            enemyHealth.enemy_health = enemyHealth.max_health;
+            playerHealth.double_damage = true;
+        }
     }
 
     void Update()

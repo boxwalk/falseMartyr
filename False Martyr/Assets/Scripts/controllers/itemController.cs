@@ -151,6 +151,8 @@ public class itemController : MonoBehaviour
         if (temp_item_pool.Count == 0)
             refillItemPool();
         int picked_item = temp_item_pool[Random.Range(0, temp_item_pool.Count)];
+        if(picked_item < 20) //increased chance of new item
+            picked_item = temp_item_pool[Random.Range(0, temp_item_pool.Count)];
         if (!item_library[picked_item].is_unlimited_supply)
             item_library[picked_item].supply--;
         temp_item_pool.Remove(picked_item);

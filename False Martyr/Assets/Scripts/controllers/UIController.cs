@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour
     //children
     private TextMeshProUGUI Top_text;
     private TextMeshProUGUI Bottom_text;
+    public GameObject[] titles;
 
     //values
     private bool ready_for_flavour_text = true;
@@ -27,6 +28,10 @@ public class UIController : MonoBehaviour
         anim = GetComponent<Animator>(); //get components
         Top_text = transform.GetChild(1).GetChild(1).gameObject.GetComponent<TextMeshProUGUI>(); //get children
         Bottom_text = transform.GetChild(1).GetChild(2).gameObject.GetComponent<TextMeshProUGUI>();
+        foreach(GameObject titleobj in titles)
+        {
+            titleobj.SetActive(false);
+        }
     }
 
     void Update()

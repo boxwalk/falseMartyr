@@ -15,6 +15,8 @@ public class modificationLogic : MonoBehaviour
     private ReferenceController reference;
     private itemController item;
     private modificationController mod;
+    private statController stats;
+
 
     void Start()
     {
@@ -25,9 +27,10 @@ public class modificationLogic : MonoBehaviour
         reference = GameObject.FindGameObjectWithTag("ReferenceController").GetComponent<ReferenceController>();
         item = reference.ItemController;
         mod = reference.ModificationController;
+        stats = reference.StatController;
 
         //find parent
-        parent = item.item_library[mod.modification_list[mod.modification_list.Count-1]].mod_parent;
+        parent = item.item_library[stats.modification_list[stats.modification_list.Count-1]].mod_parent;
 
         //get target renderer
         if (parent == "body") //parent is body so transform.parent will give a valid game object
